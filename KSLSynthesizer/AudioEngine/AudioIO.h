@@ -14,7 +14,7 @@ class AudioIOListener
 {
 public:
     virtual ~AudioIOListener(void)    {}
-    virtual void ProcessReplacing(class AudioIO* io, int16_t** buffer, int length) = 0;
+    virtual void ProcessReplacing(class AudioIO* io, int16_t** buffer, const uint32_t length) = 0;
 };
 
 

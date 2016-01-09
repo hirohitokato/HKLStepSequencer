@@ -316,7 +316,10 @@ ConvertSInt16ToAudioSampleType(int16_t sample)
 //      AudioIO::Render
 //  ---------------------------------------------------------------------------
 void
-AudioIO::Render(AudioUnitRenderActionFlags* ioActionFlags, const AudioTimeStamp* inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames,
+AudioIO::Render(AudioUnitRenderActionFlags* /*ioActionFlags*/,
+                const AudioTimeStamp* inTimeStamp,
+                UInt32 /*inBusNumber*/,
+                UInt32 inNumberFrames,
                 AudioBufferList* ioData)
 {
     if ((inTimeStamp != NULL) && ((inTimeStamp->mFlags & kAudioTimeStampHostTimeValid) != 0))
@@ -420,7 +423,7 @@ AudioIO::InterruptionCallback(void* inClientData, UInt32 inInterruptionState)
 //      AudioIO::AudioRouteChange
 //  ---------------------------------------------------------------------------
 void
-AudioIO::AudioRouteChange(AudioSessionPropertyID inID, UInt32 inDataSize, const void* inData)
+AudioIO::AudioRouteChange(AudioSessionPropertyID inID, UInt32 /*inDataSize*/, const void* /*inData*/)
 {
     switch (inID)
     {

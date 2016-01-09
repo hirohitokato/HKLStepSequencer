@@ -17,7 +17,8 @@
 //  ---------------------------------------------------------------------------
 Sequencer::Sequencer(float samplingRate) :
 samplingRate_(samplingRate),
-numberOfSteps_(16), //  全体で16ステップのシーケンサー.
+numberOfSteps_(12), // 全体で12ステップのシーケンサー
+stepsPerBeats_(12), // 1ビートで12拍
 isRunning_(false),
 currentStep_(0),
 stepFrameLength_(0),
@@ -70,8 +71,8 @@ Sequencer::SetDefault(void)
 {
     for (int step = 0; step < numberOfSteps_; ++step)
     {
-        this->Set(0, step, ((step % 4) == 0));  // トラック1 - kick.wav
-        this->Set(1, step, ((step % 8) == 4));  // トラック2 - snare.wav
+        this->Set(0, step, ((step % 3) == 0));  // トラック1 - kick.wav
+        this->Set(1, step, ((step % 4) == 4));  // トラック2 - snare.wav
         this->Set(2, step, ((step % 2) == 0));  // トラック3 - zap.wav
         this->Set(3, step, true);               // トラック4 - noiz.wav
     }
@@ -98,7 +99,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
                 const float tempo = event.floatValue;
                 currentStep_ = 0;
                 currentFrame_ = 0;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 4;   //  length = 1/16
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 12;   //  length = 1/16
                 trigger_ = true;
                 isRunning_ = true;
             }
@@ -113,7 +114,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
             if (1)
             {
                 const float tempo = event.floatValue;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 4;   //  length = 1/16
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 12;   //  length = 1/16
             }
         default:
             break;

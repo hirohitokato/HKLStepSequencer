@@ -22,17 +22,6 @@ Synthesizer::Synthesizer(float samplingRate) :
 {
     seqEvents_.reserve(100);
 
-    const int   kNumberOfOscillator  = 4;
-    const CFStringRef wavFile[kNumberOfOscillator] = {
-        CFSTR("kick.wav"), CFSTR("snare.wav"), CFSTR("zap.wav"), CFSTR("noiz.wav") };
-    for (int oscNo = 0; oscNo < kNumberOfOscillator; ++oscNo)
-    {
-        DrumOscillator* osc = new DrumOscillator(samplingRate_);
-        osc->LoadAudioFileInResourceFolder(wavFile[oscNo]);
-        osc->SetPanpot(64);
-        oscillators_.push_back(osc);
-    }
-
     seq_->AddListener(this);
 }
 
@@ -41,11 +30,7 @@ Synthesizer::Synthesizer(float samplingRate) :
 //  ---------------------------------------------------------------------------
 Synthesizer::~Synthesizer(void)
 {
-    for (size_t oscNo = 0; oscNo < oscillators_.size(); ++oscNo)
-    {
-        delete oscillators_[oscNo];
-    }
-    oscillators_.clear();
+    CleanupOscillators();
 
     delete seq_;
     seq_ = NULL;
@@ -96,7 +81,7 @@ Synthesizer::DecodeSeqEvent(const SequencerEvent* event)
 //      Synthesizer::RenderAudio
 //  ---------------------------------------------------------------------------
 inline void
-Synthesizer::RenderAudio(AudioIO* io, int16_t** buffer, int length)
+Synthesizer::RenderAudio(AudioIO* /*io*/, int16_t** buffer, int length)
 {
     for (auto oscillator: oscillators_) {
         oscillator->Process(buffer, length);
@@ -107,13 +92,13 @@ Synthesizer::RenderAudio(AudioIO* io, int16_t** buffer, int length)
 //      Synthesizer::ProcessReplacing
 //  ---------------------------------------------------------------------------
 void
-Synthesizer::ProcessReplacing(AudioIO* io, int16_t** buffer, int length)
+Synthesizer::ProcessReplacing(AudioIO* io, int16_t** buffer, const uint32_t length)
 {
     //  clear buffer
     ::memset(buffer[0], 0, length * sizeof(int16_t));
     ::memset(buffer[1], 0, length * sizeof(int16_t));
 
-    int rest = length;
+    int rest = static_cast<int>(length);
     int offset = 0;
     while (rest > 0)
     {            
@@ -204,3 +189,33 @@ Synthesizer::UpdateTempo(uint64_t hostTime, float tempo)
     }
 }
 
+//  ---------------------------------------------------------------------------
+//      Synthesizer::CleanupOscillators
+//  ---------------------------------------------------------------------------
+void
+Synthesizer::CleanupOscillators()
+{
+    for (size_t oscNo = 0; oscNo < oscillators_.size(); ++oscNo)
+    {
+        delete oscillators_[oscNo];
+    }
+    oscillators_.clear();
+}
+
+//  ---------------------------------------------------------------------------
+//      Synthesizer::SetSoundSet
+//  ---------------------------------------------------------------------------
+void
+Synthesizer::SetSoundSet(const std::vector<std::string> &soundfiles)
+{
+    CleanupOscillators();
+
+    for (const auto &soundfile: soundfiles) {
+        DrumOscillator* osc = new DrumOscillator(samplingRate_);
+        CFStringRef wavFile = CFStringCreateWithCString(kCFAllocatorDefault,
+                                                        soundfile.c_str(), kCFStringEncodingUTF8);
+        osc->LoadAudioFileInResourceFolder(wavFile);
+        osc->SetPanpot(64);
+        oscillators_.push_back(osc);
+    }
+}

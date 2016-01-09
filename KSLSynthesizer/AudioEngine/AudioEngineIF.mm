@@ -44,6 +44,7 @@ public:
         _synth = new Synthesizer(fs);
         _audioIo = new AudioIO(fs);
         _connector = new SequencerConnector(self);
+
         _synth->GetSequencer()->AddListener(_connector);
         _audioIo->SetListener(_synth);
         _audioIo->Open();
@@ -84,12 +85,28 @@ public:
 //  ---------------------------------------------------------------------------
 //      setTempo
 //  ---------------------------------------------------------------------------
-- (void)setTempo:(float)tempo
+- (void)setTempo:(double)tempo
 {
     _tempo = static_cast<float>(static_cast<int>(tempo * 10)) / 10;
     if (_synth != NULL)
     {
-        _synth->UpdateTempo([self now], _tempo);
+        _synth->UpdateTempo([self now], static_cast<float>(_tempo));
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      setSounds
+//  ---------------------------------------------------------------------------
+- (void)setSounds:(NSArray<NSString *> *)sounds {
+    if (_synth != NULL)
+    {
+        _sounds = [sounds copy];
+        std::vector<std::string> soundsVector;
+        for (NSString *sound in sounds) {
+            std::string sound_cstr([sound cStringUsingEncoding:NSUTF8StringEncoding]);
+            soundsVector.emplace_back(sound_cstr);
+        }
+        _synth->SetSoundSet(soundsVector);
     }
 }
 
@@ -100,7 +117,7 @@ public:
 {
     if (_synth != NULL)
     {
-        _synth->StartSequence([self now], _tempo);
+        _synth->StartSequence([self now], static_cast<float>(_tempo));
     }
 }
 

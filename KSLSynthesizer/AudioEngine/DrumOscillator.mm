@@ -184,7 +184,8 @@ void
 DrumOscillator::LoadAudioFile(CFStringRef path)
 {
     bool    loaded = false;
-    NSURL*  url = [[NSURL alloc] initFileURLWithPath:(NSString*)CFBridgingRelease(path) isDirectory:NO];
+    NSURL*  url = [[NSURL alloc] initFileURLWithPath:(NSString*)CFBridgingRelease(path)
+                                         isDirectory:NO];
     ExtAudioFileRef fileRef = NULL;
     OSStatus    err = ::ExtAudioFileOpenURL((__bridge CFURLRef)(url), &fileRef);
     if (err == noErr)
@@ -210,13 +211,13 @@ DrumOscillator::LoadAudioFile(CFStringRef path)
                 AudioBufferList bufList;
                 bufList.mNumberBuffers = 1;
                 bufList.mBuffers[0].mNumberChannels = fileFormat.mChannelsPerFrame;
-                bufList.mBuffers[0].mDataByteSize = static_cast<const int>(tmpBuf.size());
-                bufList.mBuffers[0].mData = &tmpBuf[0];
+                bufList.mBuffers[0].mDataByteSize   = static_cast<const UInt32>(tmpBuf.size());
+                bufList.mBuffers[0].mData           = &tmpBuf[0];
 
                 while (true)
                 {
                     UInt32 frames = tmpFrames;
-                    bufList.mBuffers[0].mDataByteSize = static_cast<const int>(tmpBuf.size());
+                    bufList.mBuffers[0].mDataByteSize = static_cast<const UInt32>(tmpBuf.size());
                     err = ExtAudioFileRead(fileRef, &frames, &bufList);
                     if (err != noErr)
                     {

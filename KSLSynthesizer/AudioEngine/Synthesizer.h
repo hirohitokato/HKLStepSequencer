@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <string>
 #include <vector>
 #include "AudioIO.h"
 #include "Sequencer.h"
@@ -21,7 +22,7 @@ public:
     ~Synthesizer(void);
 
     //  AudioIOListener
-    void    ProcessReplacing(AudioIO* io, int16_t** buffer, int length);
+    void    ProcessReplacing(AudioIO* io, int16_t** buffer, const uint32_t length);
 
     //  SequencerListener
     void    NoteOnViaSequencer(int frame, int partNo, int step);
@@ -30,6 +31,7 @@ public:
     void    StopSequence(uint64_t hostTime);
     void    UpdateTempo(uint64_t hostTime, float tempo);
 
+    void    SetSoundSet(const std::vector<std::string> &soundfiles);
     Sequencer *GetSequencer() { return seq_; }
 
 private:
@@ -50,6 +52,8 @@ private:
 
     void    RenderAudio(AudioIO* io, int16_t** buffer, int length);
     void    DecodeSeqEvent(const SequencerEvent* event);
+
+    void    CleanupOscillators();
 
     const float samplingRate_;
     Sequencer*  seq_;

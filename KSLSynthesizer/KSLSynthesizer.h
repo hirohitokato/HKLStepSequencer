@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char KSLSynthesizerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <KSLSynthesizer/PublicHeader.h>
 
-#import <KSLSynthesizer/AudioEngineIF>
+#import <KSLSynthesizer/AudioEngineIF.h>

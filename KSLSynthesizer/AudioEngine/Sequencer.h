@@ -58,7 +58,8 @@ private:
     void    AddCommand(uint64_t hostTime, int cmd, float param0);
 
     const float samplingRate_;
-    const int   numberOfSteps_;
+    int     numberOfSteps_;
+    int     stepsPerBeats_;
     bool    isRunning_;
     int     currentStep_;
     float   stepFrameLength_;

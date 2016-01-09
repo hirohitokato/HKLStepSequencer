@@ -9,7 +9,8 @@
 
 @interface AudioEngineIF : NSObject
 
-@property (nonatomic, assign) float tempo;
+@property (nonatomic, assign) double tempo;
+@property (nonatomic, copy) NSArray<NSString*> *sounds;
 
 - (void)start;
 - (void)stop;
