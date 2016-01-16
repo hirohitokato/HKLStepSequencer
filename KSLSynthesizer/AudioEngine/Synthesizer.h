@@ -21,6 +21,8 @@ public:
     Synthesizer(float samplingRate);
     ~Synthesizer(void);
 
+    void    SetSequencer(Sequencer *seq);
+
     //  AudioIOListener
     void    ProcessReplacing(AudioIO* io, int16_t** buffer, const uint32_t length);
 
@@ -32,7 +34,6 @@ public:
     void    UpdateTempo(uint64_t hostTime, float tempo);
 
     void    SetSoundSet(const std::vector<std::string> &soundfiles);
-    Sequencer *GetSequencer() { return seq_; }
 
 private:
     Synthesizer(const Synthesizer& other) = delete;

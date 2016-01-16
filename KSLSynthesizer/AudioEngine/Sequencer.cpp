@@ -17,8 +17,8 @@
 //  ---------------------------------------------------------------------------
 Sequencer::Sequencer(float samplingRate) :
 samplingRate_(samplingRate),
-numberOfSteps_(12), // 全体で12ステップのシーケンサー
-stepsPerBeats_(12), // 1ビートで12拍
+numberOfSteps_(12), // 全体で12ステップのシーケンサー(mutable)
+stepsPerBeats_(12), // 1ビートで12拍(3連符と4連符の最小公倍数)
 isRunning_(false),
 currentStep_(0),
 stepFrameLength_(0),
@@ -31,11 +31,8 @@ commandsMutex_()
 {
     // 各ステップの再生有無をstd::vector<bool>で記憶するトラックを4本作成
     const int   kNumberOfTrack  = 4;
-    for (int trackNo = 0; trackNo < kNumberOfTrack; ++trackNo)
-    {
-        std::vector<bool>   partSeq(numberOfSteps_, false);
-        seq_.push_back(partSeq);
-    }
+    SetupTracks(kNumberOfTrack);
+
     // 各トラックの再生タイミングをデフォルト値で作成
     this->SetDefault();
 }
@@ -72,9 +69,23 @@ Sequencer::SetDefault(void)
     for (int step = 0; step < numberOfSteps_; ++step)
     {
         this->Set(0, step, ((step % 3) == 0));  // トラック1 - kick.wav
-        this->Set(1, step, ((step % 4) == 4));  // トラック2 - snare.wav
-        this->Set(2, step, ((step % 2) == 0));  // トラック3 - zap.wav
-        this->Set(3, step, true);               // トラック4 - noiz.wav
+        this->Set(1, step, ((step % 4) == 0));  // トラック2 - snare.wav
+        this->Set(2, step, ((step %12) == 0));  // トラック3 - zap.wav
+        this->Set(3, step, ((step %13) == 0));  // トラック4 - noiz.wav
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      Sequencer::SetupTracks
+//  ---------------------------------------------------------------------------
+void
+Sequencer::SetupTracks(int numberOfSteps)
+{
+    seq_.clear();
+    for (int trackNo = 0; trackNo < numberOfSteps; ++trackNo)
+    {
+        std::vector<bool>   partSeq(numberOfSteps_, false);
+        seq_.push_back(partSeq);
     }
 }
 
@@ -83,6 +94,7 @@ enum
     kSeqCommand_Start = 0,
     kSeqCommand_Stop,
     kSeqCommand_UpdateTempo,
+    kSeqCommand_UpdateNumSteps,
 };
 
 //  ---------------------------------------------------------------------------
@@ -99,7 +111,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
                 const float tempo = event.floatValue;
                 currentStep_ = 0;
                 currentFrame_ = 0;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 12;   //  length = 1/16
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeats_;
                 trigger_ = true;
                 isRunning_ = true;
             }
@@ -114,8 +126,17 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
             if (1)
             {
                 const float tempo = event.floatValue;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / 12;   //  length = 1/16
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeats_;
             }
+            break;
+        case kSeqCommand_UpdateNumSteps:
+            if (1) {
+                const int numberOfSteps = static_cast<int>(event.floatValue);
+                if (numberOfSteps != numberOfSteps_) {
+                    numberOfSteps_ = numberOfSteps;
+                }
+            }
+            break;
         default:
             break;
     }
@@ -277,7 +298,7 @@ Sequencer::RemoveListener(SequencerListener* listener)
 //      Sequencer::AddCommand
 //  ---------------------------------------------------------------------------
 void
-Sequencer::AddCommand(uint64_t hostTime, int cmd, float param0)
+Sequencer::AddCommand(const uint64_t hostTime, const int cmd, const float param0)
 {
     ScopedLock<CriticalSection> lock(commandsMutex_);
     const SeqCommandEvent   event = { hostTime, cmd, param0 };
@@ -288,7 +309,7 @@ Sequencer::AddCommand(uint64_t hostTime, int cmd, float param0)
 //      Sequencer::Start
 //  ---------------------------------------------------------------------------
 void
-Sequencer::Start(uint64_t hostTime, float tempo)
+Sequencer::Start(const uint64_t hostTime, const float tempo)
 {
     this->AddCommand(hostTime, kSeqCommand_Start, tempo);
 }
@@ -297,7 +318,7 @@ Sequencer::Start(uint64_t hostTime, float tempo)
 //      Sequencer::Stop
 //  ---------------------------------------------------------------------------
 void
-Sequencer::Stop(uint64_t hostTime)
+Sequencer::Stop(const uint64_t hostTime)
 {
     this->AddCommand(hostTime, kSeqCommand_Stop, 0.0f/* ignore */);
 }
@@ -306,7 +327,16 @@ Sequencer::Stop(uint64_t hostTime)
 //      Sequencer::UpdateTempo
 //  ---------------------------------------------------------------------------
 void
-Sequencer::UpdateTempo(uint64_t hostTime, float tempo)
+Sequencer::UpdateTempo(const uint64_t hostTime, const float tempo)
 {
     this->AddCommand(hostTime, kSeqCommand_UpdateTempo, tempo);
+}
+
+//  ---------------------------------------------------------------------------
+//      Sequencer::UpdateNumSteps
+//  ---------------------------------------------------------------------------
+void
+Sequencer::UpdateNumSteps(const uint64_t hostTime, const int numberOfSteps)
+{
+    this->AddCommand(hostTime, kSeqCommand_UpdateNumSteps, numberOfSteps);
 }

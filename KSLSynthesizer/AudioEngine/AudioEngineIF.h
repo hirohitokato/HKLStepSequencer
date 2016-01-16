@@ -7,10 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AudioEngineIFProtocol;
+
 @interface AudioEngineIF : NSObject
 
 @property (nonatomic, assign) double tempo;
 @property (nonatomic, copy) NSArray<NSString*> *sounds;
+@property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
 
 - (void)start;
 - (void)stop;
@@ -20,4 +23,9 @@
  *  @return current time
  */
 - (uint64_t)now;
+@end
+
+@protocol AudioEngineIFProtocol <NSObject>
+@required
+- (void)audioEngine:(AudioEngineIF *)engine didTriggeredTrack:(int) trackNo step:(int)stepNo atTime:(uint64_t)absoluteTime;
 @end

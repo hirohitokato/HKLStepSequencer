@@ -9,16 +9,27 @@
 #import "AudioEngineIF.h"
 #import "AudioIO.h"
 #import "Synthesizer.h"
+#import "Sequencer.h"
 
 class SequencerConnector : public SequencerListener {
     AudioEngineIF *receiver_;
+    int respondableToSelector_;
 public:
-    SequencerConnector(AudioEngineIF *receiver) : receiver_(receiver) {}
-    void NoteOnViaSequencer(int frame, int partNo, int step) {
-        NSLog(@"frame:%d partNo:%d step:%d", frame, partNo, step);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //[receiver_ blinkUIWithPart:partNo step:step];
-        });
+    SequencerConnector(AudioEngineIF *receiver) :
+    receiver_(receiver), respondableToSelector_(-1) {}
+    void NoteOnViaSequencer(int /*frame*/, int partNo, int step) {
+        uint64_t now = mach_absolute_time();
+        if (respondableToSelector_ == -1) {
+            respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:didTriggeredTrack:step:atTime:)];
+        }
+        if (respondableToSelector_) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [receiver_.delegate audioEngine:receiver_
+                              didTriggeredTrack:partNo
+                                           step:step
+                                         atTime:now];
+            });
+        }
     }
 };
 
@@ -26,6 +37,7 @@ public:
 @property (nonatomic) Synthesizer*        synth;
 @property (nonatomic) AudioIO*            audioIo;
 @property (nonatomic) SequencerConnector* connector;
+@property (nonatomic) Sequencer*          sequencer;
 @end
 
 @implementation AudioEngineIF
@@ -42,11 +54,14 @@ public:
 
         const float fs = 44100.0f;
         _synth = new Synthesizer(fs);
+        _sequencer = new Sequencer(fs);
         _audioIo = new AudioIO(fs);
         _connector = new SequencerConnector(self);
 
-        _synth->GetSequencer()->AddListener(_connector);
+        _synth->SetSequencer(_sequencer);
+        _sequencer->AddListener(_connector);
         _audioIo->SetListener(_synth);
+
         _audioIo->Open();
         _audioIo->Start();
     }
@@ -59,11 +74,13 @@ public:
 - (void)dealloc
 {
     delete _audioIo;
-    _audioIo = NULL;
+    _audioIo = nullptr;
     delete _synth;
-    _synth = NULL;
+    _synth = nullptr;
+    delete _sequencer;
+    _sequencer = nullptr;
     delete _connector;
-    _connector = NULL;
+    _connector = nullptr;
 }
 
 #pragma mark -
@@ -74,7 +91,7 @@ public:
 - (uint64_t)latency
 {
     uint64_t    result = 0;
-    if (_audioIo != NULL)
+    if (_audioIo != nullptr)
     {
         result += _audioIo->GetLatency();  //  audio i/o latency
     }
@@ -88,7 +105,7 @@ public:
 - (void)setTempo:(double)tempo
 {
     _tempo = static_cast<float>(static_cast<int>(tempo * 10)) / 10;
-    if (_synth != NULL)
+    if (_synth != nullptr)
     {
         _synth->UpdateTempo([self now], static_cast<float>(_tempo));
     }
@@ -98,7 +115,7 @@ public:
 //      setSounds
 //  ---------------------------------------------------------------------------
 - (void)setSounds:(NSArray<NSString *> *)sounds {
-    if (_synth != NULL)
+    if (_synth != nullptr)
     {
         _sounds = [sounds copy];
         std::vector<std::string> soundsVector;
@@ -115,7 +132,7 @@ public:
 //  ---------------------------------------------------------------------------
 - (void)start
 {
-    if (_synth != NULL)
+    if (_synth != nullptr)
     {
         _synth->StartSequence([self now], static_cast<float>(_tempo));
     }
@@ -126,7 +143,7 @@ public:
 //  ---------------------------------------------------------------------------
 - (void)stop
 {
-    if (_synth != NULL)
+    if (_synth != nullptr)
     {
         _synth->StopSequence([self now]);
     }

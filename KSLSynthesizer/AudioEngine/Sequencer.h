@@ -27,9 +27,10 @@ public:
     void    AddListener(SequencerListener* listener);
     void    RemoveListener(SequencerListener* listener);
 
-    void    Start(uint64_t hostTime, float tempo);
-    void    Stop(uint64_t hostTime);
-    void    UpdateTempo(uint64_t hostTime, float tempo);
+    void    Start(const uint64_t hostTime, const float tempo);
+    void    Stop(const uint64_t hostTime);
+    void    UpdateTempo(const uint64_t hostTime, const float tempo);
+    void    UpdateNumSteps(const uint64_t hostTime, const int numberOfSteps);
 
     int     Process(class AudioIO* io, int offset, int length);
 
@@ -37,6 +38,7 @@ private:
     Sequencer(const Sequencer& other);                      //  not implemented
     const Sequencer& operator= (const Sequencer& other);    //  not implemented
 
+    void    SetupTracks(int numberOfSteps);
     void    SetDefault(void);
     void    Set(int trackNo, int stepNo, bool sw);
 
@@ -55,7 +57,7 @@ private:
     void    ProcessTrigger(int offset, int trackNo);
     void    ProcessTrigger(int offset);
     void    ProcessSequence(int offset, int length);
-    void    AddCommand(uint64_t hostTime, int cmd, float param0);
+    void    AddCommand(const uint64_t hostTime, const int cmd, const float param0);
 
     const float samplingRate_;
     int     numberOfSteps_;

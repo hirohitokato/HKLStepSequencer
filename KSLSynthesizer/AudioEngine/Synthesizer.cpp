@@ -8,7 +8,6 @@
 
 #include <algorithm>
 #include "Synthesizer.h"
-#include "Sequencer.h"
 #include "DrumOscillator.h"
 
 //  ---------------------------------------------------------------------------
@@ -16,13 +15,11 @@
 //  ---------------------------------------------------------------------------
 Synthesizer::Synthesizer(float samplingRate) :
     samplingRate_(samplingRate),
-    seq_(new Sequencer(samplingRate_)),
+    seq_(nullptr),
     seqEvents_(),
     oscillators_()
 {
     seqEvents_.reserve(100);
-
-    seq_->AddListener(this);
 }
 
 //  ---------------------------------------------------------------------------
@@ -153,6 +150,16 @@ Synthesizer::ProcessReplacing(AudioIO* io, int16_t** buffer, const uint32_t leng
 }
 
 #pragma mark -
+//  ---------------------------------------------------------------------------
+//      Synthesizer::SetSequencer
+//  ---------------------------------------------------------------------------
+void
+Synthesizer::SetSequencer(Sequencer *seq)
+{
+    seq_ = seq;
+    seq_->AddListener(this);
+}
+
 //  ---------------------------------------------------------------------------
 //      Synthesizer::StartSequence
 //  ---------------------------------------------------------------------------

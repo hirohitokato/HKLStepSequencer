@@ -202,12 +202,12 @@
 				1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */,
 				1A2BC3DE1C3FFA50007F65D7 /* CriticalSection.h */,
 				1A2BC3DF1C3FFA50007F65D7 /* DrumOscillator.h */,
-				1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */,
 				1A2BC3E11C3FFA50007F65D7 /* ScopedLock.h */,
-				1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */,
 				1A2BC3E31C3FFA50007F65D7 /* Sequencer.h */,
-				1A2BC3E41C3FFA50007F65D7 /* Synthesizer.cpp */,
 				1A2BC3E51C3FFA50007F65D7 /* Synthesizer.h */,
+				1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */,
+				1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */,
+				1A2BC3E41C3FFA50007F65D7 /* Synthesizer.cpp */,
 			);
 			path = AudioEngine;
 			sourceTree = "<group>";
@@ -755,6 +755,7 @@
 				1A2BC3D71C3FF95B007F65D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A2BC3D81C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "KSLSynthesizerTests" */ = {
 			isa = XCConfigurationList;
@@ -763,6 +764,7 @@
 				1A2BC3DA1C3FF95B007F65D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A2BC41A1C409FA1007F65D7 /* Build configuration list for PBXNativeTarget "Sample" */ = {
 			isa = XCConfigurationList;
@@ -771,6 +773,7 @@
 				1A2BC41C1C409FA1007F65D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A2BC41D1C409FA1007F65D7 /* Build configuration list for PBXNativeTarget "SampleTests" */ = {
 			isa = XCConfigurationList;
@@ -779,6 +782,7 @@
 				1A2BC41F1C409FA1007F65D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
