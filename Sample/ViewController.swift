@@ -52,3 +52,14 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: AudioEngineIFProtocol {
+    func audioEngine(engine: AudioEngineIF!,
+        didTriggeredTrack trackNo: Int32,
+        step stepNo: Int32,
+        atTime absoluteTime: UInt64)
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+
+        }
+    }
+}
