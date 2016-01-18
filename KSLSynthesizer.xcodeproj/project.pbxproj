@@ -112,6 +112,7 @@
 		1A2BC4291C40B089007F65D7 /* noiz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noiz.wav; sourceTree = "<group>"; };
 		1A2BC42A1C40B089007F65D7 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		1A2BC42B1C40B089007F65D7 /* zap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zap.wav; sourceTree = "<group>"; };
+		1A2C667E1C4D00ED00F1BD85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +154,7 @@
 		1A2BC3B71C3FF95B007F65D7 = {
 			isa = PBXGroup;
 			children = (
+				1A2C667E1C4D00ED00F1BD85 /* README.md */,
 				1A2BC3C31C3FF95B007F65D7 /* KSLSynthesizer */,
 				1A2BC4011C409FA0007F65D7 /* Sample */,
 				1A2BC3CF1C3FF95B007F65D7 /* KSLSynthesizerTests */,

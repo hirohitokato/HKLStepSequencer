@@ -112,6 +112,17 @@ public:
 }
 
 //  ---------------------------------------------------------------------------
+//      setNumSteps
+//  ---------------------------------------------------------------------------
+- (void)setNumSteps:(NSInteger)numSteps
+{
+    _numSteps = numSteps;
+    if (_synth != nullptr) {
+        _sequencer->UpdateNumSteps([self now], static_cast<int>(_numSteps));
+    }
+}
+
+//  ---------------------------------------------------------------------------
 //      setSounds
 //  ---------------------------------------------------------------------------
 - (void)setSounds:(NSArray<NSString *> *)sounds {

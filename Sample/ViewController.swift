@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var _bpmLabel: UILabel!
     @IBOutlet weak var _bpmSlider: UISlider!
 
+    @IBOutlet weak var _stepLabel: UILabel!
+    @IBOutlet weak var _stepSlider: UISlider!
+
     let BPM_MIN = 30.0
     let BPM_MAX = 300.0
 
@@ -22,7 +25,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        sliderUpdated(_bpmSlider)
+        bpmSliderUpdated(_bpmSlider)
+        stepSliderUpdated(_stepSlider)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +36,9 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
     }
+}
+
+extension ViewController {
 
     @IBAction func setSounds(sender: AnyObject) {
         engine_.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
@@ -45,10 +52,15 @@ class ViewController: UIViewController {
         engine_.stop()
     }
 
-    @IBAction func sliderUpdated(sender: UISlider) {
+    @IBAction func bpmSliderUpdated(sender: UISlider) {
         let newBpm = (BPM_MAX * Double(sender.value)) + BPM_MIN
         engine_.tempo = newBpm
         _bpmLabel.text = String(newBpm)
+    }
+    @IBAction func stepSliderUpdated(sender: UISlider) {
+        let numStep = Int(sender.value)
+        engine_.numSteps = numStep
+        _stepLabel.text = String(numStep)
     }
 }
 

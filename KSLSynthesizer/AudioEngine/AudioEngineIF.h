@@ -12,6 +12,7 @@
 @interface AudioEngineIF : NSObject
 
 @property (nonatomic, assign) double tempo;
+@property (nonatomic, assign) NSInteger numSteps;
 @property (nonatomic, copy) NSArray<NSString*> *sounds;
 @property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
 

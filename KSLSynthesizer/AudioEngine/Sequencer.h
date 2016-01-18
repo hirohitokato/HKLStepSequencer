@@ -38,7 +38,7 @@ private:
     Sequencer(const Sequencer& other);                      //  not implemented
     const Sequencer& operator= (const Sequencer& other);    //  not implemented
 
-    void    SetupTracks(int numberOfSteps);
+    void    SetupTracks(void);
     void    SetDefault(void);
     void    Set(int trackNo, int stepNo, bool sw);
 
@@ -60,6 +60,7 @@ private:
     void    AddCommand(const uint64_t hostTime, const int cmd, const float param0);
 
     const float samplingRate_;
+    int     numberOfTracks_;
     int     numberOfSteps_;
     int     stepsPerBeats_;
     bool    isRunning_;

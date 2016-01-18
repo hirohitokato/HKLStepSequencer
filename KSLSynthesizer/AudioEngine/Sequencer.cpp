@@ -17,6 +17,7 @@
 //  ---------------------------------------------------------------------------
 Sequencer::Sequencer(float samplingRate) :
 samplingRate_(samplingRate),
+numberOfTracks_(4),
 numberOfSteps_(12), // 全体で12ステップのシーケンサー(mutable)
 stepsPerBeats_(12), // 1ビートで12拍(3連符と4連符の最小公倍数)
 isRunning_(false),
@@ -30,8 +31,7 @@ listeners_(),
 commandsMutex_()
 {
     // 各ステップの再生有無をstd::vector<bool>で記憶するトラックを4本作成
-    const int   kNumberOfTrack  = 4;
-    SetupTracks(kNumberOfTrack);
+    SetupTracks();
 
     // 各トラックの再生タイミングをデフォルト値で作成
     this->SetDefault();
@@ -79,10 +79,10 @@ Sequencer::SetDefault(void)
 //      Sequencer::SetupTracks
 //  ---------------------------------------------------------------------------
 void
-Sequencer::SetupTracks(int numberOfSteps)
+Sequencer::SetupTracks()
 {
     seq_.clear();
-    for (int trackNo = 0; trackNo < numberOfSteps; ++trackNo)
+    for (int trackNo = 0; trackNo < numberOfTracks_; ++trackNo)
     {
         std::vector<bool>   partSeq(numberOfSteps_, false);
         seq_.push_back(partSeq);
@@ -134,6 +134,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
                 const int numberOfSteps = static_cast<int>(event.floatValue);
                 if (numberOfSteps != numberOfSteps_) {
                     numberOfSteps_ = numberOfSteps;
+                    SetupTracks();
                 }
             }
             break;
