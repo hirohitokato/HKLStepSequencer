@@ -29,7 +29,6 @@
 		1A2BC4081C409FA0007F65D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4061C409FA0007F65D7 /* Main.storyboard */; };
 		1A2BC40A1C409FA0007F65D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4091C409FA0007F65D7 /* Assets.xcassets */; };
 		1A2BC40D1C409FA0007F65D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC40B1C409FA0007F65D7 /* LaunchScreen.storyboard */; };
-		1A2BC4181C409FA1007F65D7 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC4171C409FA1007F65D7 /* SampleTests.swift */; };
 		1A2BC4241C40AE36007F65D7 /* KSLSynthesizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* KSLSynthesizer.framework */; };
 		1A2BC4251C40AE36007F65D7 /* KSLSynthesizer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* KSLSynthesizer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A2BC42C1C40B089007F65D7 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4281C40B089007F65D7 /* kick.wav */; };
@@ -45,13 +44,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1A2BC3C01C3FF95B007F65D7;
 			remoteInfo = KSLSynthesizer;
-		};
-		1A2BC4141C409FA1007F65D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1A2BC3B81C3FF95B007F65D7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1A2BC3FF1C409FA0007F65D7;
-			remoteInfo = Sample;
 		};
 		1A2BC4221C40ACD3007F65D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -105,14 +97,12 @@
 		1A2BC4091C409FA0007F65D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A2BC40C1C409FA0007F65D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A2BC40E1C409FA0007F65D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A2BC4131C409FA1007F65D7 /* SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2BC4171C409FA1007F65D7 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
-		1A2BC4191C409FA1007F65D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2BC4281C40B089007F65D7 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
 		1A2BC4291C40B089007F65D7 /* noiz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noiz.wav; sourceTree = "<group>"; };
 		1A2BC42A1C40B089007F65D7 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		1A2BC42B1C40B089007F65D7 /* zap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zap.wav; sourceTree = "<group>"; };
 		1A2C667E1C4D00ED00F1BD85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1A2C667F1C4D083100F1BD85 /* KSLSynthesizer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = KSLSynthesizer.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,24 +131,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A2BC4101C409FA1007F65D7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1A2BC3B71C3FF95B007F65D7 = {
 			isa = PBXGroup;
 			children = (
+				1A2C667F1C4D083100F1BD85 /* KSLSynthesizer.podspec */,
 				1A2C667E1C4D00ED00F1BD85 /* README.md */,
 				1A2BC3C31C3FF95B007F65D7 /* KSLSynthesizer */,
 				1A2BC4011C409FA0007F65D7 /* Sample */,
 				1A2BC3CF1C3FF95B007F65D7 /* KSLSynthesizerTests */,
-				1A2BC4161C409FA1007F65D7 /* SampleTests */,
 				1A2BC3FB1C3FFFBB007F65D7 /* Frameworks */,
 				1A2BC3C21C3FF95B007F65D7 /* Products */,
 			);
@@ -170,7 +153,6 @@
 				1A2BC3C11C3FF95B007F65D7 /* KSLSynthesizer.framework */,
 				1A2BC3CB1C3FF95B007F65D7 /* KSLSynthesizerTests.xctest */,
 				1A2BC4001C409FA0007F65D7 /* Sample.app */,
-				1A2BC4131C409FA1007F65D7 /* SampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,15 +217,6 @@
 				1A2BC4271C40B089007F65D7 /* wav */,
 			);
 			path = Sample;
-			sourceTree = "<group>";
-		};
-		1A2BC4161C409FA1007F65D7 /* SampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				1A2BC4171C409FA1007F65D7 /* SampleTests.swift */,
-				1A2BC4191C409FA1007F65D7 /* Info.plist */,
-			);
-			path = SampleTests;
 			sourceTree = "<group>";
 		};
 		1A2BC4271C40B089007F65D7 /* wav */ = {
@@ -333,24 +306,6 @@
 			productReference = 1A2BC4001C409FA0007F65D7 /* Sample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1A2BC4121C409FA1007F65D7 /* SampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1A2BC41D1C409FA1007F65D7 /* Build configuration list for PBXNativeTarget "SampleTests" */;
-			buildPhases = (
-				1A2BC40F1C409FA1007F65D7 /* Sources */,
-				1A2BC4101C409FA1007F65D7 /* Frameworks */,
-				1A2BC4111C409FA1007F65D7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1A2BC4151C409FA1007F65D7 /* PBXTargetDependency */,
-			);
-			name = SampleTests;
-			productName = SampleTests;
-			productReference = 1A2BC4131C409FA1007F65D7 /* SampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -370,10 +325,6 @@
 					1A2BC3FF1C409FA0007F65D7 = {
 						CreatedOnToolsVersion = 7.2;
 					};
-					1A2BC4121C409FA1007F65D7 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 1A2BC3FF1C409FA0007F65D7;
-					};
 				};
 			};
 			buildConfigurationList = 1A2BC3BB1C3FF95B007F65D7 /* Build configuration list for PBXProject "KSLSynthesizer" */;
@@ -392,7 +343,6 @@
 				1A2BC3C01C3FF95B007F65D7 /* KSLSynthesizer */,
 				1A2BC3CA1C3FF95B007F65D7 /* KSLSynthesizerTests */,
 				1A2BC3FF1C409FA0007F65D7 /* Sample */,
-				1A2BC4121C409FA1007F65D7 /* SampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -423,13 +373,6 @@
 				1A2BC42E1C40B089007F65D7 /* snare.wav in Resources */,
 				1A2BC42F1C40B089007F65D7 /* zap.wav in Resources */,
 				1A2BC4081C409FA0007F65D7 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1A2BC4111C409FA1007F65D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,14 +408,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A2BC40F1C409FA1007F65D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A2BC4181C409FA1007F65D7 /* SampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -480,11 +415,6 @@
 			isa = PBXTargetDependency;
 			target = 1A2BC3C01C3FF95B007F65D7 /* KSLSynthesizer */;
 			targetProxy = 1A2BC3CD1C3FF95B007F65D7 /* PBXContainerItemProxy */;
-		};
-		1A2BC4151C409FA1007F65D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1A2BC3FF1C409FA0007F65D7 /* Sample */;
-			targetProxy = 1A2BC4141C409FA1007F65D7 /* PBXContainerItemProxy */;
 		};
 		1A2BC4231C40ACD3007F65D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -629,7 +559,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = KSLSynthesizer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.KSLSynthesizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -664,7 +596,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = KSLSynthesizer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.KSLSynthesizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -714,30 +648,6 @@
 			};
 			name = Release;
 		};
-		1A2BC41E1C409FA1007F65D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.SampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
-			};
-			name = Debug;
-		};
-		1A2BC41F1C409FA1007F65D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.SampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -773,15 +683,6 @@
 			buildConfigurations = (
 				1A2BC41B1C409FA1007F65D7 /* Debug */,
 				1A2BC41C1C409FA1007F65D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1A2BC41D1C409FA1007F65D7 /* Build configuration list for PBXNativeTarget "SampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1A2BC41E1C409FA1007F65D7 /* Debug */,
-				1A2BC41F1C409FA1007F65D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
