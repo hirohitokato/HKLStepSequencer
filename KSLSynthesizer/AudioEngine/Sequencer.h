@@ -9,7 +9,7 @@
 #pragma once
 
 #include <vector>
-#include "CriticalSection.h"
+#include <mutex>
 
 class SequencerListener
 {
@@ -71,5 +71,5 @@ private:
     std::vector< std::vector<bool> >   seq_;
     std::vector<SeqCommandEvent>   commands_;
     std::vector<SequencerListener*>  listeners_;
-    CriticalSection     commandsMutex_;
+    std::mutex     commandsMutex_;
 };

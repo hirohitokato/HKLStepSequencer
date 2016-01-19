@@ -12,10 +12,8 @@
 		1A2BC3D11C3FF95B007F65D7 /* KSLSynthesizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3D01C3FF95B007F65D7 /* KSLSynthesizerTests.m */; };
 		1A2BC3E81C3FFA50007F65D7 /* AudioIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3DC1C3FFA50007F65D7 /* AudioIO.h */; };
 		1A2BC3E91C3FFA50007F65D7 /* AudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */; };
-		1A2BC3EA1C3FFA50007F65D7 /* CriticalSection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3DE1C3FFA50007F65D7 /* CriticalSection.h */; };
 		1A2BC3EB1C3FFA50007F65D7 /* DrumOscillator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3DF1C3FFA50007F65D7 /* DrumOscillator.h */; };
 		1A2BC3EC1C3FFA50007F65D7 /* DrumOscillator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */; };
-		1A2BC3ED1C3FFA50007F65D7 /* ScopedLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3E11C3FFA50007F65D7 /* ScopedLock.h */; };
 		1A2BC3EE1C3FFA50007F65D7 /* Sequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */; };
 		1A2BC3EF1C3FFA50007F65D7 /* Sequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3E31C3FFA50007F65D7 /* Sequencer.h */; };
 		1A2BC3F01C3FFA50007F65D7 /* Synthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3E41C3FFA50007F65D7 /* Synthesizer.cpp */; };
@@ -77,10 +75,8 @@
 		1A2BC3D21C3FF95B007F65D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2BC3DC1C3FFA50007F65D7 /* AudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioIO.h; sourceTree = "<group>"; };
 		1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioIO.mm; sourceTree = "<group>"; };
-		1A2BC3DE1C3FFA50007F65D7 /* CriticalSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CriticalSection.h; sourceTree = "<group>"; };
 		1A2BC3DF1C3FFA50007F65D7 /* DrumOscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumOscillator.h; sourceTree = "<group>"; };
 		1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DrumOscillator.mm; sourceTree = "<group>"; };
-		1A2BC3E11C3FFA50007F65D7 /* ScopedLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScopedLock.h; sourceTree = "<group>"; };
 		1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sequencer.cpp; sourceTree = "<group>"; };
 		1A2BC3E31C3FFA50007F65D7 /* Sequencer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequencer.h; sourceTree = "<group>"; };
 		1A2BC3E41C3FFA50007F65D7 /* Synthesizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Synthesizer.cpp; sourceTree = "<group>"; };
@@ -184,9 +180,7 @@
 				1A2BC3E71C3FFA50007F65D7 /* AudioEngineIF.mm */,
 				1A2BC3DC1C3FFA50007F65D7 /* AudioIO.h */,
 				1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */,
-				1A2BC3DE1C3FFA50007F65D7 /* CriticalSection.h */,
 				1A2BC3DF1C3FFA50007F65D7 /* DrumOscillator.h */,
-				1A2BC3E11C3FFA50007F65D7 /* ScopedLock.h */,
 				1A2BC3E31C3FFA50007F65D7 /* Sequencer.h */,
 				1A2BC3E51C3FFA50007F65D7 /* Synthesizer.h */,
 				1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */,
@@ -241,10 +235,8 @@
 				1A2BC3C51C3FF95B007F65D7 /* KSLSynthesizer.h in Headers */,
 				1A2BC3F11C3FFA50007F65D7 /* Synthesizer.h in Headers */,
 				1A2BC3E81C3FFA50007F65D7 /* AudioIO.h in Headers */,
-				1A2BC3ED1C3FFA50007F65D7 /* ScopedLock.h in Headers */,
 				1A2BC3EB1C3FFA50007F65D7 /* DrumOscillator.h in Headers */,
 				1A2BC3EF1C3FFA50007F65D7 /* Sequencer.h in Headers */,
-				1A2BC3EA1C3FFA50007F65D7 /* CriticalSection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

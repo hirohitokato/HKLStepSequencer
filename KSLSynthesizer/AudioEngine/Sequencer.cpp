@@ -10,7 +10,6 @@
 #include <algorithm>
 #include "Sequencer.h"
 #include "AudioIO.h"
-#include "ScopedLock.h"
 
 //  ---------------------------------------------------------------------------
 //      Sequencer::Sequencer
@@ -156,7 +155,7 @@ Sequencer::ProcessCommands(AudioIO* io, int offset, int length)
         mach_timebase_info_data_t timeInfo;
         ::mach_timebase_info(&timeInfo);
         {
-            ScopedLock<CriticalSection> lock(commandsMutex_);
+            std::lock_guard<std::mutex> lock(commandsMutex_);
             std::sort(commands_.begin(), commands_.end(), Sequencer::SortEventFunctor);
             for (std::vector<SeqCommandEvent>::iterator ite = commands_.begin(); ite != commands_.end();)
             {
@@ -301,7 +300,7 @@ Sequencer::RemoveListener(SequencerListener* listener)
 void
 Sequencer::AddCommand(const uint64_t hostTime, const int cmd, const float param0)
 {
-    ScopedLock<CriticalSection> lock(commandsMutex_);
+    std::lock_guard<std::mutex> lock(commandsMutex_);
     const SeqCommandEvent   event = { hostTime, cmd, param0 };
     commands_.push_back(event);
 }
