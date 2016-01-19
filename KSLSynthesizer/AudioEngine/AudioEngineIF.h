@@ -11,12 +11,33 @@
 
 @interface AudioEngineIF : NSObject
 
+/**
+ *  bpm
+ */
 @property (nonatomic, assign) double tempo;
+
+/**
+ *  the number of steps in a track
+ */
 @property (nonatomic, assign) NSInteger numSteps;
+
+/**
+ *  Sound files. The number of sounds must be equal to the number of tracks
+ */
 @property (nonatomic, copy) NSArray<NSString*> *sounds;
+
+/**
+ *  Delegate object conforms to AudioEngineIFProtocol
+ */
 @property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
 
+/**
+ *  Start sequencer
+ */
 - (void)start;
+/**
+ *  Stop sequencer
+ */
 - (void)stop;
 
 /**
