@@ -399,7 +399,7 @@ AudioIO::Interrupt(UInt32 state)
             this->Stop();
             break;
         case kAudioSessionEndInterruption:
-            // 割り込みが終わったので、オーディオセッションを再アクティブ化
+            // Activate again because an interrupt has been ended
             [[AVAudioSession sharedInstance] setActive:YES error:nil];
             //::AudioSessionSetActive(true);
             this->Start();

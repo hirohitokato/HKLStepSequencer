@@ -157,7 +157,7 @@ Sequencer::ProcessCommands(AudioIO* io, int offset, int length)
         {
             std::lock_guard<std::mutex> lock(commandsMutex_);
             std::sort(commands_.begin(), commands_.end(), Sequencer::SortEventFunctor);
-            for (std::vector<SeqCommandEvent>::iterator ite = commands_.begin(); ite != commands_.end();)
+            for (auto ite = commands_.begin(); ite != commands_.end();)
             {
                 bool    doProcess = false;
                 if (ite->hostTime == 0)    //  now
