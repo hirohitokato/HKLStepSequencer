@@ -1,10 +1,10 @@
-# KSLSynthesizer
+# HKLSynthesizer
 
 Audio Synthesizer & Sequencer for iOS.
 
 # How to use
 
-- `import KSLSynthesizer` (if you use Objective-C, import AudioEngineIF.h)
+- `import HKLSynthesizer` (if you use Objective-C, import AudioEngineIF.h)
 - Instantiate a AudioEngineIF object and use it.
 
 ```swift

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Sample
 //
-//  Created by 加藤寛人 on 2016/01/09.
+//  Created by Hirohito Kato on 2016/01/09.
 //  Copyright © 2016年 Hirohito Kato. All rights reserved.
 //
 

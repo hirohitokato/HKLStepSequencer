@@ -1,18 +1,18 @@
 //
-//  KSLSynthesizerTests.m
-//  KSLSynthesizerTests
+//  HKLSynthesizerTests.m
+//  HKLSynthesizerTests
 //
-//  Created by 加藤寛人 on 2016/01/08.
+//  Created by Hirohito Kato on 2016/01/08.
 //  Copyright © 2016年 Hirohito Kato. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface KSLSynthesizerTests : XCTestCase
+@interface HKLSynthesizerTests : XCTestCase
 
 @end
 
-@implementation KSLSynthesizerTests
+@implementation HKLSynthesizerTests
 
 - (void)setUp {
     [super setUp];

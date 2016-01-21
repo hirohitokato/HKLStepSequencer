@@ -1,16 +1,16 @@
 Pod::Spec.new do |s|
-    s.name         = "KSLSynthesizer"
+    s.name         = "HKLSynthesizer"
     s.version      = "0.5.0"
     s.summary      = "Audio Synthesizer & Sequencer engine for iOS."
 
     s.description  = <<-DESC
-    KSLSynthesizer is a simple but precise audio sequencer engine for iOS.
+    HKLSynthesizer is a simple but precise audio sequencer engine for iOS.
     **This library uses a sample program contained in KORG WIST SDK.**
     DESC
 
-    s.homepage     = "https://github.com/hirohitokato/KSLSynthesizer"
-    s.screenshots  = "https://raw.githubusercontent.com/hirohitokato/KSLSynthesizer/master/images/screenshot_0.png"
-    s.source       = { :git => "https://github.com/hirohitokato/KSLSynthesizer.git", :tag => "v#{s.version}" }
+    s.homepage     = "https://github.com/hirohitokato/HKLSynthesizer"
+    s.screenshots  = "https://raw.githubusercontent.com/hirohitokato/HKLSynthesizer/master/images/screenshot_0.png"
+    s.source       = { :git => "https://github.com/hirohitokato/HKLSynthesizer.git", :tag => "v#{s.version}" }
 
     s.license      = "New BSD"
     s.author       = "Hirohito Kato"
@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
 
     s.requires_arc = true
     s.frameworks   = 'Foundation', 'AVFoundation', 'AudioToolbox'
-    s.module_name  = "KSLSynthesizer"
-    s.source_files = "KSLSynthesizer/**/*.{h,cpp,mm,swift}"
+    s.module_name  = "HKLSynthesizer"
+    s.source_files = "HKLSynthesizer/**/*.{h,cpp,mm,swift}"
 end

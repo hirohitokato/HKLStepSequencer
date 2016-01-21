@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KSLSynthesizer.xcodeproj">
+      location = "self:/Users/ek005033/develop/git/KSLSynthesizer/HKLSynthesizer.xcodeproj">
    </FileRef>
 </Workspace>
