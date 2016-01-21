@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     DESC
 
     s.homepage     = "https://github.com/hirohitokato/KSLSynthesizer"
-    #s.screenshots  = "https://raw.githubusercontent.com/hirohitokato/KSLSynthesizer/master/images/screenshots_1.gif"
+    s.screenshots  = "https://raw.githubusercontent.com/hirohitokato/KSLSynthesizer/master/images/screenshot_0.png"
     s.source       = { :git => "https://github.com/hirohitokato/KSLSynthesizer.git", :tag => "v#{s.version}" }
 
     s.license      = "New BSD"
