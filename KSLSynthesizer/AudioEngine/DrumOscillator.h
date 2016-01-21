@@ -16,7 +16,12 @@ public:
     DrumOscillator(float samplingRate);
     ~DrumOscillator(void);
 
-    void    SetPanpot(int pan);
+    /* 0(left)-64(center)-127(right) */
+    void    SetPanPosition(const int pan);
+
+    /* 0x0(mute) - 0x7FFF(x1.0) - 0xFFFF(x2.0) */
+    void    SetAmpCoefficient(const int32_t ampCoef);
+    int32_t GetAmpCoefficient(void);
 
     void    Process(int16_t** output, int length);
     void    TriggerOn(void);
@@ -32,11 +37,11 @@ private:
     void    ProcessPan(int32_t ampOut, int32_t& left, int32_t& right);
 
     const float     tgSamplingRate_;
-    const int32_t   ampCoef_;
+    int32_t     ampCoef_ = 0x7FFF >> 2; //  amp gain
     float       pcmSamplingRate_;
     int32_t     transpose_;
     int32_t     tune_;
-    uint32_t    pitchOffset_;
+    uint32_t    pitchOffset_ = 0x1000;  //  1.0
     int32_t     panCoef_;
     bool        isValid_;
     uint32_t    numberOfFrames_;

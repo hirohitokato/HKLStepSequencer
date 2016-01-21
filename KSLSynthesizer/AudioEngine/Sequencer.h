@@ -29,8 +29,10 @@ public:
 
     void    Start(const uint64_t hostTime, const float tempo);
     void    Stop(const uint64_t hostTime);
+
     void    UpdateTempo(const uint64_t hostTime, const float tempo);
     void    UpdateNumSteps(const uint64_t hostTime, const int numberOfSteps);
+    void    UpdateTrack(const int trackNo, const std::vector<bool> &sequence);
 
     int     Process(class AudioIO* io, int offset, int length);
 

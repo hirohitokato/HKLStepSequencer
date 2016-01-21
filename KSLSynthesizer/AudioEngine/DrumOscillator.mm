@@ -14,11 +14,9 @@
 //  ---------------------------------------------------------------------------
 DrumOscillator::DrumOscillator(float samplingRate) :
 tgSamplingRate_(samplingRate),
-ampCoef_(0x7FFF >> 2),  //  amp gain
 pcmSamplingRate_(tgSamplingRate_),
 transpose_(0),
 tune_(0),
-pitchOffset_(0x1000),   //  1.0
 panCoef_(0),
 isValid_(false),
 numberOfFrames_(0),
@@ -27,7 +25,7 @@ pcmData_(),
 isRunning_(false),
 trigger_(false)
 {
-    this->SetPanpot(64);
+    this->SetPanPosition(64);
 }
 
 //  ---------------------------------------------------------------------------
@@ -38,16 +36,36 @@ DrumOscillator::~DrumOscillator(void)
 }
 
 //  ---------------------------------------------------------------------------
-//      DrumOscillator::SetPanpot
+//      DrumOscillator::SetPanPosition
 //  ---------------------------------------------------------------------------
 void
-DrumOscillator::SetPanpot(int pan)
+DrumOscillator::SetPanPosition(const int pan)
 {
 #define CLIP(x, min, max)   (x < min ? min : (x > max ? max : x))
     const int32_t   panOfs = CLIP(pan, 0, 127) - 64;
     const int32_t   coef = (0x400000 + 66577 * panOfs) >> 8;
     panCoef_ = CLIP(coef, 0, 0x7FFF);
 #undef CLIP
+}
+
+//  ---------------------------------------------------------------------------
+//      DrumOscillator::SetAmpCoefficient
+//  ---------------------------------------------------------------------------
+void
+DrumOscillator::SetAmpCoefficient(const int32_t ampCoef)
+{
+#define CLIP(x, min, max)   (x < min ? min : (x > max ? max : x))
+    ampCoef_ = CLIP(ampCoef, 0, 0xFFFF);
+#undef CLIP
+}
+
+//  ---------------------------------------------------------------------------
+//      DrumOscillator::GetAmpCoefficient
+//  ---------------------------------------------------------------------------
+int32_t
+DrumOscillator::GetAmpCoefficient(void)
+{
+    return ampCoef_;
 }
 
 //  ---------------------------------------------------------------------------

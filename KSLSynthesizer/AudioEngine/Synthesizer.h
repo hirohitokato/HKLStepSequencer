@@ -35,6 +35,9 @@ public:
 
     void    SetSoundSet(const std::vector<std::string> &soundfiles);
 
+    void    SetAmpCoefficient(const int partNo, const int32_t ampCoef);
+    void    SetPanPosition(const int partNo, const int pan);
+
 private:
     Synthesizer(const Synthesizer& other) = delete;
     const Synthesizer& operator= (const Synthesizer& other) = delete;

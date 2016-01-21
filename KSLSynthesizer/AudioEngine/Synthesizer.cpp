@@ -222,7 +222,29 @@ Synthesizer::SetSoundSet(const std::vector<std::string> &soundfiles)
         CFStringRef wavFile = CFStringCreateWithCString(kCFAllocatorDefault,
                                                         soundfile.c_str(), kCFStringEncodingUTF8);
         osc->LoadAudioFileInResourceFolder(wavFile);
-        osc->SetPanpot(64);
+        osc->SetPanPosition(64);
         oscillators_.push_back(osc);
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      Synthesizer::SetAmpCoefficient
+//  ---------------------------------------------------------------------------
+void
+Synthesizer::SetAmpCoefficient(const int partNo, const int32_t ampCoef)
+{
+    if (static_cast<size_t>(partNo) < oscillators_.size()) {
+        oscillators_[partNo]->SetAmpCoefficient(ampCoef);
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      Synthesizer::SetPanPosition
+//  ---------------------------------------------------------------------------
+void
+Synthesizer::SetPanPosition(const int partNo, const int pan)
+{
+    if (static_cast<size_t>(partNo) < oscillators_.size()) {
+        oscillators_[partNo]->SetPanPosition(pan);
     }
 }

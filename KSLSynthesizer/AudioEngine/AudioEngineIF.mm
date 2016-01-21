@@ -125,7 +125,8 @@ public:
 //  ---------------------------------------------------------------------------
 //      setSounds
 //  ---------------------------------------------------------------------------
-- (void)setSounds:(NSArray<NSString *> *)sounds {
+- (void)setSounds:(NSArray<NSString *> *)sounds
+{
     if (_synth != nullptr)
     {
         _sounds = [sounds copy];
@@ -135,6 +136,54 @@ public:
             soundsVector.emplace_back(sound_cstr);
         }
         _synth->SetSoundSet(soundsVector);
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      setStepSequence:ofTrack:
+//  ---------------------------------------------------------------------------
+- (void)setStepSequence:(NSArray<NSNumber *> *)sequence ofTrack:(NSInteger)trackNo
+{
+    if (_synth != nullptr) {
+        if (sequence.count == (NSUInteger)_numSteps) {
+            std::vector<bool> seq(_numSteps);
+            for (NSNumber *stepObj in sequence) {
+                seq.push_back(stepObj.boolValue);
+            }
+            _sequencer->UpdateTrack(static_cast<int>(trackNo), seq);
+        }
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      setAmpGain:ofTrack:
+//  ---------------------------------------------------------------------------
+- (void)setAmpGain:(double)ampGain ofTrack:(NSInteger)trackNo
+{
+    if (_synth != nullptr) {
+        if (ampGain >= 0.0 && ampGain <= 2.0) {
+            int32_t gain = ampGain * 0x7FFF;
+            _synth->SetAmpCoefficient(static_cast<int>(trackNo), gain);
+        }
+    }
+}
+
+/**
+ *  Set pan position(-1.0…1.0) for the specified track.
+ *
+ *  @param position -1.0(left)…0.0(center)…1.0(right)
+ *  @param trackNo  track number
+ */
+//  ---------------------------------------------------------------------------
+//      setPanPosition:ofTrack:
+//  ---------------------------------------------------------------------------
+- (void)setPanPosition:(double)position ofTrack:(NSInteger)trackNo
+{
+    if (_synth != nullptr) {
+        if (position >= -1.0 && position <= 1.0) {
+            int32_t pos = (position + 1.0) * 63.5;
+            _synth->SetPanPosition(static_cast<int>(trackNo), pos);
+        }
     }
 }
 

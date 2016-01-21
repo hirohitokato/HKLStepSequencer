@@ -340,3 +340,15 @@ Sequencer::UpdateNumSteps(const uint64_t hostTime, const int numberOfSteps)
 {
     this->AddCommand(hostTime, kSeqCommand_UpdateNumSteps, numberOfSteps);
 }
+
+//  ---------------------------------------------------------------------------
+//      Sequencer::UpdateTrack
+//  ---------------------------------------------------------------------------
+void
+Sequencer::UpdateTrack(const int trackNo, const std::vector<bool> &sequence)
+{
+    if ((trackNo >= 0) && (trackNo < static_cast<int>(seq_.size())))
+    {
+        seq_[trackNo] = sequence;
+    }
+}

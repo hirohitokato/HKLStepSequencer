@@ -17,7 +17,7 @@
 @property (nonatomic, assign) double tempo;
 
 /**
- *  the number of steps in a track
+ *  number of steps in a track
  */
 @property (nonatomic, assign) NSInteger numSteps;
 
@@ -27,24 +27,45 @@
 @property (nonatomic, copy) NSArray<NSString*> *sounds;
 
 /**
- *  Delegate object conforms to AudioEngineIFProtocol
+ *  Set sequence for the specified track.
+ *
+ *  The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
+ *
+ *  @param sequence array of bool values. true means note on.
+ *  @param trackNo  track number
  */
-@property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
+- (void)setStepSequence:(NSArray<NSNumber *> *)sequence ofTrack:(NSInteger)trackNo;
 
 /**
- *  Start sequencer
+ *  Set amplifier gain(0.0-2.0) for the specified track
+ *
+ *  @param ampGain 0.0(mute)…1.0(original)…2.0(x2.0)
+ *  @param trackNo track number
+ */
+- (void)setAmpGain:(double)ampGain ofTrack:(NSInteger)trackNo;
+
+/**
+ *  Set pan position(-1.0…1.0) for the specified track.
+ *
+ *  @param position -1.0(left)…0.0(center)…1.0(right)
+ *  @param trackNo  track number
+ */
+- (void)setPanPosition:(double)position ofTrack:(NSInteger)trackNo;
+
+/**
+ *  Start playing
  */
 - (void)start;
+
 /**
- *  Stop sequencer
+ *  Stop playing
  */
 - (void)stop;
 
 /**
- *  returns current time by mach_absolute_time()
- *  @return current time
+ *  Delegate object conforms to AudioEngineIFProtocol
  */
-- (uint64_t)now;
+@property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
 @end
 
 @protocol AudioEngineIFProtocol <NSObject>
