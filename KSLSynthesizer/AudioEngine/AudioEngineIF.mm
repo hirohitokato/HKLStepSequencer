@@ -168,12 +168,6 @@ public:
     }
 }
 
-/**
- *  Set pan position(-1.0…1.0) for the specified track.
- *
- *  @param position -1.0(left)…0.0(center)…1.0(right)
- *  @param trackNo  track number
- */
 //  ---------------------------------------------------------------------------
 //      setPanPosition:ofTrack:
 //  ---------------------------------------------------------------------------
@@ -181,7 +175,7 @@ public:
 {
     if (_synth != nullptr) {
         if (position >= -1.0 && position <= 1.0) {
-            int32_t pos = (position + 1.0) * 63.5;
+            int32_t pos = (position + 1.0) * 64;
             _synth->SetPanPosition(static_cast<int>(trackNo), pos);
         }
     }
