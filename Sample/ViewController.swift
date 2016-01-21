@@ -52,6 +52,14 @@ extension ViewController {
         engine_.stop()
     }
 
+    @IBAction func panSliderUpdated(sender: UISlider) {
+        engine_.setPanPosition(Double(sender.value)*2.0-1, ofTrack: sender.tag)
+    }
+
+    @IBAction func ampSliderUpdated(sender: UISlider) {
+        engine_.setAmpGain(Double(sender.value)*2.0, ofTrack: sender.tag)
+    }
+
     @IBAction func bpmSliderUpdated(sender: UISlider) {
         let newBpm = (BPM_MAX * Double(sender.value)) + BPM_MIN
         engine_.tempo = newBpm
