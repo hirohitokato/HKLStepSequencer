@@ -1,6 +1,14 @@
 # HKLSynthesizer
 
-Audio Synthesizer & Sequencer for iOS.
+Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmbox/drum-machine app easily.
+
+# Features
+
+- M track & N step sequencer.(depends on your iOS device spec)
+- gain & pan parameters for each track
+- supports 44100Hz/16bits linearPCM audio data
+- suports over 1000bpm(actually, there is no limit)
+- supports both Swift & Objective-C
 
 # How to use
 
@@ -92,6 +100,8 @@ The class API is as follows:
 @end
 ```
 # Screenshot of sample project
+
+The sample shows 4 track & N steps sequencer.
 
 ![screenshot](images/screenshot_0.png)
 
