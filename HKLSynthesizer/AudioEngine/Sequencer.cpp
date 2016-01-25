@@ -67,10 +67,10 @@ Sequencer::SetDefault(void)
 {
     for (int step = 0; step < numberOfSteps_; ++step)
     {
-        this->Set(0, step, ((step % 3) == 0));  // トラック1 - kick.wav
-        this->Set(1, step, ((step % 4) == 0));  // トラック2 - snare.wav
-        this->Set(2, step, ((step %12) == 0));  // トラック3 - zap.wav
-        this->Set(3, step, ((step %13) == 0));  // トラック4 - noiz.wav
+        this->Set(0, step, ((step % 4) == 0));  // トラック1 - kick.wav
+        this->Set(1, step, ((step % 8) == 0));  // トラック2 - snare.wav
+        this->Set(2, step, ((step % 2) == 0));  // トラック3 - zap.wav
+        this->Set(3, step, true);               // トラック4 - noiz.wav
     }
 }
 

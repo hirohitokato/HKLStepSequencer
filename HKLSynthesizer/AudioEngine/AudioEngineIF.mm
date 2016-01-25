@@ -146,7 +146,7 @@ public:
 {
     if (_synth != nullptr) {
         if (sequence.count == (NSUInteger)_numSteps) {
-            std::vector<bool> seq(_numSteps);
+            std::vector<bool> seq;
             for (NSNumber *stepObj in sequence) {
                 seq.push_back(stepObj.boolValue);
             }
