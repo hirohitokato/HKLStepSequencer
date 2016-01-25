@@ -33,6 +33,7 @@
 		1A2BC42D1C40B089007F65D7 /* noiz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4291C40B089007F65D7 /* noiz.wav */; };
 		1A2BC42E1C40B089007F65D7 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42A1C40B089007F65D7 /* snare.wav */; };
 		1A2BC42F1C40B089007F65D7 /* zap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42B1C40B089007F65D7 /* zap.wav */; };
+		1A4575DA1C53519300A4A2D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1A4575D91C53519300A4A2D9 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		1A2BC42B1C40B089007F65D7 /* zap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zap.wav; sourceTree = "<group>"; };
 		1A2C667E1C4D00ED00F1BD85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A2C667F1C4D083100F1BD85 /* HKLSynthesizer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HKLSynthesizer.podspec; sourceTree = "<group>"; };
+		1A4575D91C53519300A4A2D9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				1A2C667F1C4D083100F1BD85 /* HKLSynthesizer.podspec */,
 				1A2C667E1C4D00ED00F1BD85 /* README.md */,
+				1A4575D91C53519300A4A2D9 /* LICENSE */,
 				1A2BC3C31C3FF95B007F65D7 /* HKLSynthesizer */,
 				1A2BC4011C409FA0007F65D7 /* Sample */,
 				1A2BC3CF1C3FF95B007F65D7 /* HKLSynthesizerTests */,
@@ -179,10 +182,10 @@
 				1A2BC3E61C3FFA50007F65D7 /* AudioEngineIF.h */,
 				1A2BC3E71C3FFA50007F65D7 /* AudioEngineIF.mm */,
 				1A2BC3DC1C3FFA50007F65D7 /* AudioIO.h */,
-				1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */,
 				1A2BC3DF1C3FFA50007F65D7 /* DrumOscillator.h */,
 				1A2BC3E31C3FFA50007F65D7 /* Sequencer.h */,
 				1A2BC3E51C3FFA50007F65D7 /* Synthesizer.h */,
+				1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */,
 				1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */,
 				1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */,
 				1A2BC3E41C3FFA50007F65D7 /* Synthesizer.cpp */,
@@ -344,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A4575DA1C53519300A4A2D9 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

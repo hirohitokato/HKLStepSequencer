@@ -44,6 +44,24 @@ extension ViewController {
         engine_.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
     }
 
+    @IBAction func resetSequence(sender: AnyObject) {
+        var track0 = [Bool](count: engine_.numSteps, repeatedValue: false)
+        var track1 = [Bool](count: engine_.numSteps, repeatedValue: false)
+        var track2 = [Bool](count: engine_.numSteps, repeatedValue: false)
+        var track3 = [Bool](count: engine_.numSteps, repeatedValue: false)
+
+        for i in 0 ..< engine_.numSteps {
+            track0[i] = ((i % 4) == 0)
+            track1[i] = ((i % 8) == 0)
+            track2[i] = ((i % 2) == 0)
+            track3[i] = ((i % 1) == 0)
+        }
+        engine_.setStepSequence(track0, ofTrack: 0)
+        engine_.setStepSequence(track1, ofTrack: 1)
+        engine_.setStepSequence(track2, ofTrack: 2)
+        engine_.setStepSequence(track3, ofTrack: 3)
+    }
+
     @IBAction func Start(sender: AnyObject) {
         engine_.start()
     }
