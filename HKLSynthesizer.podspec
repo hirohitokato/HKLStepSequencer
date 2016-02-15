@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "HKLSynthesizer"
-    s.version      = "0.7.2"
+    s.version      = "0.7.3"
     s.summary      = "Audio Synthesizer & Sequencer engine for iOS."
 
     s.description  = <<-DESC
@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
     s.frameworks   = 'Foundation', 'AVFoundation', 'AudioToolbox'
     s.module_name  = "HKLSynthesizer"
     s.source_files = "HKLSynthesizer/**/*.{h,cpp,mm,swift}"
-    s.public_header_files = ["HKLSynthesizer/HKLSynthesizer.h", "HKLSynthesizer/HKLSynthesizer/AudioEngineIF.h"]
+    s.public_header_files = ["HKLSynthesizer/HKLSynthesizer.h", "HKLSynthesizer/AudioEngine/AudioEngineIF.h"]
 end
