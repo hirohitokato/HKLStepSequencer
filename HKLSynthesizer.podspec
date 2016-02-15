@@ -23,4 +23,5 @@ Pod::Spec.new do |s|
     s.frameworks   = 'Foundation', 'AVFoundation', 'AudioToolbox'
     s.module_name  = "HKLSynthesizer"
     s.source_files = "HKLSynthesizer/**/*.{h,cpp,mm,swift}"
+    s.public_header_files = ["HKLSynthesizer/HKLSynthesizer.h", "HKLSynthesizer/HKLSynthesizer/AudioEngine.h"]
 end
