@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "HKLSynthesizer"
-    s.version      = "0.6.0"
+    s.version      = "0.7.0"
     s.summary      = "Audio Synthesizer & Sequencer engine for iOS."
 
     s.description  = <<-DESC
