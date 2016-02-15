@@ -4,7 +4,7 @@ Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmb
 
 # Features
 
-- M track & N step sequencer.(depends on your iOS device spec)
+- M tracks & N steps sequencer.(depends on your iOS device spec)
 - gain & pan parameters for each track
 - supports 44100Hz/16bits linearPCM audio data
 - suports over 1000bpm(actually, there is no limit)
