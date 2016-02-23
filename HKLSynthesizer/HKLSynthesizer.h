@@ -3,7 +3,6 @@
 //  HKLSynthesizer
 //
 //  Created by Hirohito Kato on 2016/01/08.
-//  Copyright © 2016 Hirohito Kato. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

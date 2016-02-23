@@ -50,7 +50,7 @@ The class API is as follows:
 /**
 *  Sound files. The number of sounds must be equal to the number of tracks
 */
-@property (nonatomic, copy) NSArray<NSString*> *sounds;
+@property (nonatomic, copy) NSArray<NSString*>* _Nullable sounds;
 
 /**
 *  Set sequence for the specified track.
@@ -60,7 +60,7 @@ The class API is as follows:
 *  @param sequence array of bool values. true means note on.
 *  @param trackNo  track number
 */
-- (void)setStepSequence:(NSArray<NSNumber *> *)sequence ofTrack:(NSInteger)trackNo;
+- (void)setStepSequence:(NSArray<NSNumber *>* _Nonnull)sequence ofTrack:(NSInteger)trackNo;
 
 /**
 *  Set amplifier gain(0.0-2.0) for the specified track
@@ -96,7 +96,7 @@ The class API is as follows:
 
 @protocol AudioEngineIFProtocol <NSObject>
 @required
-- (void)audioEngine:(AudioEngineIF *)engine didTriggeredTrack:(int) trackNo step:(int)stepNo atTime:(uint64_t)absoluteTime;
+- (void)audioEngine:(AudioEngineIF * _Nonnull)engine didTriggeredTrack:(int) trackNo step:(int)stepNo atTime:(uint64_t)absoluteTime;
 @end
 ```
 # Screenshot of sample project

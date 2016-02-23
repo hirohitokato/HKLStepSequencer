@@ -91,7 +91,7 @@ extension ViewController {
 }
 
 extension ViewController: AudioEngineIFProtocol {
-    func audioEngine(engine: AudioEngineIF!,
+    func audioEngine(engine: AudioEngineIF,
         didTriggeredTrack trackNo: Int32,
         step stepNo: Int32,
         atTime absoluteTime: UInt64)
