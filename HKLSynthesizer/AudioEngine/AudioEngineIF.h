@@ -37,6 +37,13 @@
 - (void)setStepSequence:(NSArray<NSNumber *>* _Nonnull)sequence ofTrack:(NSInteger)trackNo;
 
 /**
+ *  Erase all individual status of the specified track
+ *
+ *  @param trackNo track number
+ */
+- (void)clearSequence:(NSInteger)trackNo;
+
+/**
  *  Set amplifier gain(0.0-2.0) for the specified track
  *
  *  @param ampGain 0.0(mute)…1.0(original)…2.0(x2.0)

@@ -156,6 +156,20 @@ public:
 }
 
 //  ---------------------------------------------------------------------------
+//      clearSequence:
+//  ---------------------------------------------------------------------------
+- (void)clearSequence:(NSInteger)trackNo
+{
+    if (_synth != nullptr) {
+        std::vector<bool> seq;
+        for (int i=0; i<_numSteps; ++i) {
+            seq.push_back(false);
+        }
+        _sequencer->UpdateTrack(static_cast<int>(trackNo), seq);
+    }
+}
+
+//  ---------------------------------------------------------------------------
 //      setAmpGain:ofTrack:
 //  ---------------------------------------------------------------------------
 - (void)setAmpGain:(double)ampGain ofTrack:(NSInteger)trackNo
