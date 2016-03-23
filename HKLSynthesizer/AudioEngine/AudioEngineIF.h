@@ -72,7 +72,7 @@
 /**
  *  Delegate object conforms to AudioEngineIFProtocol
  */
-@property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
+@property (nonatomic, weak) id<AudioEngineIFProtocol> _Nullable delegate;
 @end
 
 @protocol AudioEngineIFProtocol <NSObject>
