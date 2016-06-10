@@ -24,7 +24,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        engine_.delegate = self
+
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
     }
@@ -92,10 +94,11 @@ extension ViewController {
 
 extension ViewController: AudioEngineIFProtocol {
     func audioEngine(engine: AudioEngineIF,
-        didTriggeredTrack trackNo: Int32,
+        didTriggeredTracks tracks: [NSNumber],
         step stepNo: Int32,
         atTime absoluteTime: UInt64)
     {
+        print("\(tracks)")
         dispatch_async(dispatch_get_main_queue()) {
 
         }
