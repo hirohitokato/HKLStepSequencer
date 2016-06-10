@@ -60,12 +60,12 @@
 - (void)setPanPosition:(double)position ofTrack:(NSInteger)trackNo;
 
 /**
- *  Start playing
+ *  Start a sequencer
  */
 - (void)start;
 
 /**
- *  Stop playing
+ *  Stop a sequencer
  */
 - (void)stop;
 

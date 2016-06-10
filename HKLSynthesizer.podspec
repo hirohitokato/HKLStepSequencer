@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
     s.name         = "HKLSynthesizer"
-    s.version      = "0.7.6"
+    s.version      = "0.8.0"
     s.summary      = "Audio Synthesizer & Sequencer engine for iOS."
 
     s.description  = <<-DESC
-    HKLSynthesizer is a simple but precise audio sequencer engine for iOS.
+    HKLSynthesizer is a simple but precise audio synthesizer/sequencer engine for iOS.
     **This library uses a sample program contained in KORG WIST SDK.**
     DESC
 
