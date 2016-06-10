@@ -198,11 +198,11 @@ Sequencer::ProcessCommands(AudioIO* io, int offset, int length)
 //      Sequencer::ProcessTrigger
 //  ---------------------------------------------------------------------------
 inline void
-Sequencer::ProcessTrigger(int offset, int trackNo)
+Sequencer::ProcessTrigger(int offset, const std::vector<int> &trackIndexes)
 {
     for (auto obj : listeners_)
     {
-        obj->NoteOnViaSequencer(offset, trackNo, currentStep_);
+        obj->NoteOnViaSequencer(offset, trackIndexes, currentStep_);
     }
 }
 
@@ -216,15 +216,18 @@ Sequencer::ProcessTrigger(int offset)
     {
         if ((currentStep_ >= 0) && (currentStep_ < numberOfSteps_))
         {
+            // ここでONトラック(int)だけを集めてProcessTriggerに渡す
+            std::vector<int> triggeredTracks;
             const int   numOfTrack = static_cast<const int>(seq_.size());
             for (int trackNo = 0; trackNo < numOfTrack; ++trackNo)
             {
-                std::vector<bool>&   partSeq = seq_[trackNo];
+                const auto&   partSeq = seq_[trackNo];
                 if (partSeq[currentStep_])
                 {
-                    this->ProcessTrigger(offset + currentFrame_, trackNo);
+                    triggeredTracks.push_back(trackNo);
                 }
             }
+            this->ProcessTrigger(offset + currentFrame_, triggeredTracks);
         }
         trigger_ = false;
     }

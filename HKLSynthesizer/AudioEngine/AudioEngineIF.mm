@@ -17,15 +17,22 @@ class SequencerConnector : public SequencerListener {
 public:
     SequencerConnector(AudioEngineIF *receiver) :
     receiver_(receiver), respondableToSelector_(-1) {}
-    void NoteOnViaSequencer(int /*frame*/, int partNo, int step) {
+
+    void    NoteOnViaSequencer(int /*frame*/, const std::vector<int> &parts, int step) {
+
         uint64_t now = mach_absolute_time();
         if (respondableToSelector_ == -1) {
-            respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:didTriggeredTrack:step:atTime:)];
+            respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:didTriggeredTracks:step:atTime:)];
         }
         if (respondableToSelector_) {
+            NSMutableArray<NSNumber *>* tracks = [@[] mutableCopy];
+            for (auto partNo : parts) {
+                [tracks addObject:[NSNumber numberWithInt:partNo]];
+            }
+
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [receiver_.delegate audioEngine:receiver_
-                              didTriggeredTrack:partNo
+                             didTriggeredTracks:tracks
                                            step:step
                                          atTime:now];
             });

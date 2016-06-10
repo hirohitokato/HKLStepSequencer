@@ -46,10 +46,13 @@ enum
 //      Synthesizer::NoteOnViaSequencer
 //  ---------------------------------------------------------------------------
 void
-Synthesizer::NoteOnViaSequencer(int frame, int partNo, int step)
+Synthesizer::NoteOnViaSequencer(int frame, const std::vector<int> &parts, int step)
 {
-    const SequencerEvent    param = { frame, kSeqEventParamType_Trigger, partNo, step };
-    seqEvents_.push_back(param);
+    for (const auto partNo : parts)
+    {
+        const SequencerEvent    param = { frame, kSeqEventParamType_Trigger, partNo, step };
+        seqEvents_.push_back(param);
+    }
 }
 
 //  ---------------------------------------------------------------------------

@@ -15,7 +15,7 @@ class SequencerListener
 {
 public:
     virtual ~SequencerListener(void)    {}
-    virtual void    NoteOnViaSequencer(int frame, int partNo, int step) = 0;
+    virtual void    NoteOnViaSequencer(int frame, const std::vector<int> &parts, int step) = 0;
 };
 
 class Sequencer
@@ -56,7 +56,7 @@ private:
 
     int     ProcessCommands(class AudioIO* io, int offset, int length);
     void    ProcessCommand(SeqCommandEvent& event);
-    void    ProcessTrigger(int offset, int trackNo);
+    void    ProcessTrigger(int offset, const std::vector<int> &trackIndexes);
     void    ProcessTrigger(int offset);
     void    ProcessSequence(int offset, int length);
     void    AddCommand(const uint64_t hostTime, const int cmd, const float param0);

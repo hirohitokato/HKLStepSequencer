@@ -77,5 +77,13 @@
 
 @protocol AudioEngineIFProtocol <NSObject>
 @required
-- (void)audioEngine:(AudioEngineIF * _Nonnull)engine didTriggeredTrack:(int) trackNo step:(int)stepNo atTime:(uint64_t)absoluteTime;
+/**
+ *  Tells the delegate that the sequencer has triggered at the step(time)
+ *
+ *  @param engine       the audio engine that the tracks are triggered
+ *  @param tracks       tracks that the note is ON
+ *  @param stepNo       step number
+ *  @param absoluteTime time for triggered
+ */
+- (void)audioEngine:(AudioEngineIF * _Nonnull)engine didTriggeredTracks:(NSArray<NSNumber *>* _Nonnull) tracks step:(int)stepNo atTime:(uint64_t)absoluteTime;
 @end

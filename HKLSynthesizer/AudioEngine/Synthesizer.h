@@ -27,7 +27,7 @@ public:
     void    ProcessReplacing(AudioIO* io, int16_t** buffer, const uint32_t length);
 
     //  SequencerListener
-    void    NoteOnViaSequencer(int frame, int partNo, int step);
+    void    NoteOnViaSequencer(int frame, const std::vector<int> &parts, int step);
 
     void    StartSequence(uint64_t hostTime, float tempo);
     void    StopSequence(uint64_t hostTime);
