@@ -59,7 +59,7 @@
 }
 - (void)handleRouteChange:(NSNotification *)notification
 {
-    // ヘッドフォンの抜き差しなどで呼ばれる
+    // Called when audio route changed.(plug/unplug a headphone, etc.)
     NSLog(@"handleRouteChange: %@", notification.userInfo);
     // AVAudioSessionRouteChangeReasonKey and AVAudioSessionRouteChangePreviousRouteKey
     (self.io)->AudioRouteChangeCallback(self.io, kAudioSessionProperty_AudioRouteChange,
@@ -113,9 +113,9 @@ AudioIO::InitializeAudioSession(void)
 {
     try
     {
-        /* オーディオセッションから2つの通知を受け取る
-         * - AVAudioSessionInterruptionNotification 割り込みの発生・終了
-         * - AVAudioSessionRouteChangeNotification  経路変化の発生
+        /* Receive two following notification from the Audio Session.
+         * - AVAudioSessionInterruptionNotification begin / end interruput.
+         * - AVAudioSessionRouteChangeNotification  changed audio route
          */
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -127,14 +127,14 @@ AudioIO::InitializeAudioSession(void)
                    selector: @selector(handleRouteChange:)
                        name: AVAudioSessionRouteChangeNotification
                      object: session];
-        // オーディオセッションをアクティブ化
+        // Activate the audio session
         ThrowIfBOOL_([session setActive:YES error:nil]);
         // カテゴリにAVAudioSessionCategoryPlaybackを指定
         // 他のアプリが再生中でもオーディオ再生可に変更（Playbackカテゴリのデフォルトはオフ）
         ThrowIfBOOL_([session setCategory:AVAudioSessionCategoryPlayback
                               withOptions:AVAudioSessionCategoryOptionMixWithOthers
                                     error:nil]);
-/*
+/*      // Old codes.
         ThrowIfOSStatus_(::AudioSessionInitialize(NULL, NULL, AudioIO::InterruptionCallback, this));
         ThrowIfOSStatus_(::AudioSessionSetActive(true));
         const UInt32    audioCategory = kAudioSessionCategory_MediaPlayback;
@@ -283,11 +283,11 @@ AudioIO::SetIOBufferSize(void)
     try
     {
         NSTimeInterval duration = static_cast<float>(ioBufferSize_) / sampleRate_;
-        // バッファ時間を指定。指定した値が利用できないこともあるので、設定後に取得した値で保持する
+        // Set a bufffer duration. 指定した値が利用できないこともあるので、設定後に取得した値で保持する
         AVAudioSession *session = [AVAudioSession sharedInstance];
         ThrowIfBOOL_([session setPreferredIOBufferDuration:duration
                                                      error:nil]);
-        latency_ = static_cast<UInt64>(session.preferredIOBufferDuration * 1000000000ULL);
+        latency_ = static_cast<UInt64>(session.preferredIOBufferDuration * NSEC_PER_SEC/* sec to nsec */);
 
         // ThrowIfOSStatus_(::AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration,
         //                                            sizeof(duration), &duration));
