@@ -29,8 +29,8 @@ let engine_ = AudioEngineIF()
 - `start()` starts synthesizer
 - `stop()` stops running
 - `tempo` property sets its bpm
-- `numSteps` property decides the total steps of sequencer
-- `sounds` property sets the sound file for each track.
+- `numSteps` property decides total steps of the sequencer
+- `sounds` property sets a sound file names for each track.
 - `setStepSequence()` sets a note on/off sequence for the specified track.
 - `setAmpGain()` sets an amp gain for the specified track.
 - `setPanPosition()` sets a panning position for the specified track.
