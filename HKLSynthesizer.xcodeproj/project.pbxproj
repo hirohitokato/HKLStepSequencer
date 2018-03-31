@@ -30,6 +30,7 @@
 		1A2BC42E1C40B089007F65D7 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42A1C40B089007F65D7 /* snare.wav */; };
 		1A2BC42F1C40B089007F65D7 /* zap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42B1C40B089007F65D7 /* zap.wav */; };
 		1A4575DA1C53519300A4A2D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1A4575D91C53519300A4A2D9 /* LICENSE */; };
+		913FDDD6206F3485007E9A05 /* HKLSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		1A2C667E1C4D00ED00F1BD85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A2C667F1C4D083100F1BD85 /* HKLSynthesizer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HKLSynthesizer.podspec; sourceTree = "<group>"; };
 		1A4575D91C53519300A4A2D9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKLSynthesizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		1A2BC3C31C3FF95B007F65D7 /* HKLSynthesizer */ = {
 			isa = PBXGroup;
 			children = (
+				913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */,
 				1A2BC3C41C3FF95B007F65D7 /* HKLSynthesizer.h */,
 				1A2BC3C61C3FF95B007F65D7 /* Info.plist */,
 				1A2BC3DB1C3FFA50007F65D7 /* AudioEngine */,
@@ -374,6 +377,7 @@
 			files = (
 				1A2BC3F01C3FFA50007F65D7 /* Synthesizer.cpp in Sources */,
 				1A2BC3E91C3FFA50007F65D7 /* AudioIO.mm in Sources */,
+				913FDDD6206F3485007E9A05 /* HKLSynthesizer.swift in Sources */,
 				1A2BC3EC1C3FFA50007F65D7 /* DrumOscillator.mm in Sources */,
 				1A2BC3EE1C3FFA50007F65D7 /* Sequencer.cpp in Sources */,
 				1A2BC3F31C3FFA50007F65D7 /* AudioEngineIF.mm in Sources */,
