@@ -36,21 +36,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+    }
+}
+
+extension Array where Element == Bool {
+    var nsArray: [NSNumber] {
+        return self.map{ NSNumber(value:$0) }
     }
 }
 
 extension ViewController {
 
-    @IBAction func setSounds(sender: AnyObject) {
+    @IBAction func setSounds(_ sender: AnyObject) {
         engine_.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
     }
 
-    @IBAction func resetSequence(sender: AnyObject) {
-        var track0 = [Bool](count: engine_.numSteps, repeatedValue: false)
-        var track1 = [Bool](count: engine_.numSteps, repeatedValue: false)
-        var track2 = [Bool](count: engine_.numSteps, repeatedValue: false)
-        var track3 = [Bool](count: engine_.numSteps, repeatedValue: false)
+    @IBAction func resetSequence(_ sender: AnyObject) {
+        var track0 = [Bool](repeating: false, count: engine_.numSteps)
+        var track1 = [Bool](repeating: false, count: engine_.numSteps)
+        var track2 = [Bool](repeating: false, count: engine_.numSteps)
+        var track3 = [Bool](repeating: false, count: engine_.numSteps)
 
         for i in 0 ..< engine_.numSteps {
             track0[i] = ((i % 4) == 0)
@@ -58,34 +64,34 @@ extension ViewController {
             track2[i] = ((i % 2) == 0)
             track3[i] = ((i % 1) == 0)
         }
-        engine_.setStepSequence(track0, ofTrack: 0)
-        engine_.setStepSequence(track1, ofTrack: 1)
-        engine_.setStepSequence(track2, ofTrack: 2)
-        engine_.setStepSequence(track3, ofTrack: 3)
+        engine_.setStepSequence(track0.nsArray, ofTrack: 0)
+        engine_.setStepSequence(track1.nsArray, ofTrack: 1)
+        engine_.setStepSequence(track2.nsArray, ofTrack: 2)
+        engine_.setStepSequence(track3.nsArray, ofTrack: 3)
     }
 
-    @IBAction func Start(sender: AnyObject) {
+    @IBAction func Start(_ sender: AnyObject) {
         engine_.start()
     }
 
-    @IBAction func Stop(sender: AnyObject) {
+    @IBAction func Stop(_ sender: AnyObject) {
         engine_.stop()
     }
 
-    @IBAction func panSliderUpdated(sender: UISlider) {
+    @IBAction func panSliderUpdated(_ sender: UISlider) {
         engine_.setPanPosition(Double(sender.value)*2.0-1, ofTrack: sender.tag)
     }
 
-    @IBAction func ampSliderUpdated(sender: UISlider) {
+    @IBAction func ampSliderUpdated(_ sender: UISlider) {
         engine_.setAmpGain(Double(sender.value)*2.0, ofTrack: sender.tag)
     }
 
-    @IBAction func bpmSliderUpdated(sender: UISlider) {
+    @IBAction func bpmSliderUpdated(_ sender: UISlider) {
         let newBpm = (BPM_MAX * Double(sender.value)) + BPM_MIN
         engine_.tempo = newBpm
         _bpmLabel.text = String(newBpm)
     }
-    @IBAction func stepSliderUpdated(sender: UISlider) {
+    @IBAction func stepSliderUpdated(_ sender: UISlider) {
         let numStep = Int(sender.value)
         engine_.numSteps = numStep
         _stepLabel.text = String(numStep)
@@ -93,14 +99,13 @@ extension ViewController {
 }
 
 extension ViewController: AudioEngineIFProtocol {
-    func audioEngine(engine: AudioEngineIF,
+    func audioEngine(_ engine: AudioEngineIF,
         didTriggeredTracks tracks: [NSNumber],
         step stepNo: Int32,
         atTime absoluteTime: UInt64)
     {
         print("\(tracks)")
-        dispatch_async(dispatch_get_main_queue()) {
-
+        DispatchQueue.main.async {
         }
     }
 }
