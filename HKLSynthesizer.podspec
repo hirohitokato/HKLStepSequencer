@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "HKLSynthesizer"
-    s.version      = "0.8.0"
+    s.version      = "0.9.0"
     s.summary      = "Audio Synthesizer & Sequencer engine for iOS."
 
     s.description  = <<-DESC
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     s.social_media_url   = "http://twitter.com/hkato193"
 
     s.platform     = :ios
-    s.ios.deployment_target = "8.0"
+    s.ios.deployment_target = "10.3"
 
     s.requires_arc = true
     s.frameworks   = 'Foundation', 'AVFoundation', 'AudioToolbox'

@@ -112,7 +112,7 @@ The class API is as follows:
 - (void)audioEngine:(AudioEngineIF * _Nonnull)engine didTriggeredTracks:(NSArray<NSNumber *>* _Nonnull) tracks step:(int)stepNo atTime:(uint64_t)absoluteTime;
 @end
 ```
-# Screenshot of sample project
+# Screenshots of sample project
 
 The sample shows 4 track & N steps sequencer.
 
