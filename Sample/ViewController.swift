@@ -48,11 +48,11 @@ extension Array where Element == Bool {
 
 extension ViewController {
 
-    @IBAction func setSounds(_ sender: AnyObject) {
+    @IBAction func setSounds(_ sender: Any) {
         engine_.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
     }
 
-    @IBAction func resetSequence(_ sender: AnyObject) {
+    @IBAction func resetSequence(_ sender: Any) {
         var track0 = [Bool](repeating: false, count: engine_.numSteps)
         var track1 = [Bool](repeating: false, count: engine_.numSteps)
         var track2 = [Bool](repeating: false, count: engine_.numSteps)
@@ -70,11 +70,11 @@ extension ViewController {
         engine_.setStepSequence(track3.nsArray, ofTrack: 3)
     }
 
-    @IBAction func Start(_ sender: AnyObject) {
+    @IBAction func Start(_ sender: Any) {
         engine_.start()
     }
 
-    @IBAction func Stop(_ sender: AnyObject) {
+    @IBAction func Stop(_ sender: Any) {
         engine_.stop()
     }
 
