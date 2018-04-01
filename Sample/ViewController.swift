@@ -20,12 +20,10 @@ class ViewController: UIViewController {
     let BPM_MIN = 30.0
     let BPM_MAX = 300.0
 
-    let engine_ = AudioEngineIF()
+    let _engine = HKLSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        engine_.delegate = self
 
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
@@ -49,51 +47,51 @@ extension Array where Element == Bool {
 extension ViewController {
 
     @IBAction func setSounds(_ sender: Any) {
-        engine_.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
+        _engine.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
     }
 
     @IBAction func resetSequence(_ sender: Any) {
-        var track0 = [Bool](repeating: false, count: engine_.numSteps)
-        var track1 = [Bool](repeating: false, count: engine_.numSteps)
-        var track2 = [Bool](repeating: false, count: engine_.numSteps)
-        var track3 = [Bool](repeating: false, count: engine_.numSteps)
+        var track0 = [Bool](repeating: false, count: _engine.numberOfSteps)
+        var track1 = [Bool](repeating: false, count: _engine.numberOfSteps)
+        var track2 = [Bool](repeating: false, count: _engine.numberOfSteps)
+        var track3 = [Bool](repeating: false, count: _engine.numberOfSteps)
 
-        for i in 0 ..< engine_.numSteps {
+        for i in 0 ..< _engine.numberOfSteps {
             track0[i] = ((i % 4) == 0)
             track1[i] = ((i % 8) == 0)
             track2[i] = ((i % 2) == 0)
             track3[i] = ((i % 1) == 0)
         }
-        engine_.setStepSequence(track0.nsArray, ofTrack: 0)
-        engine_.setStepSequence(track1.nsArray, ofTrack: 1)
-        engine_.setStepSequence(track2.nsArray, ofTrack: 2)
-        engine_.setStepSequence(track3.nsArray, ofTrack: 3)
+        _engine.setStepSequence(track0, ofTrack: 0)
+        _engine.setStepSequence(track1, ofTrack: 1)
+        _engine.setStepSequence(track2, ofTrack: 2)
+        _engine.setStepSequence(track3, ofTrack: 3)
     }
 
     @IBAction func Start(_ sender: Any) {
-        engine_.start()
+        _engine.start()
     }
 
     @IBAction func Stop(_ sender: Any) {
-        engine_.stop()
+        _engine.stop()
     }
 
     @IBAction func panSliderUpdated(_ sender: UISlider) {
-        engine_.setPanPosition(Double(sender.value)*2.0-1, ofTrack: sender.tag)
+        _engine.setPanPosition(Double(sender.value)*2.0-1, ofTrack: sender.tag)
     }
 
     @IBAction func ampSliderUpdated(_ sender: UISlider) {
-        engine_.setAmpGain(Double(sender.value)*2.0, ofTrack: sender.tag)
+        _engine.setAmpGain(Double(sender.value)*2.0, ofTrack: sender.tag)
     }
 
     @IBAction func bpmSliderUpdated(_ sender: UISlider) {
         let newBpm = (BPM_MAX * Double(sender.value)) + BPM_MIN
-        engine_.tempo = newBpm
+        _engine.tempo = newBpm
         _bpmLabel.text = String(newBpm)
     }
     @IBAction func stepSliderUpdated(_ sender: UISlider) {
         let numStep = Int(sender.value)
-        engine_.numSteps = numStep
+        _engine.numberOfSteps = numStep
         _stepLabel.text = String(numStep)
     }
 }
