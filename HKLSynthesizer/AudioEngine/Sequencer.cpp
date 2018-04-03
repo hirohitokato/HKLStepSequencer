@@ -172,7 +172,7 @@ Sequencer::ProcessTrigger(int offset, const std::vector<int> &trackIndexes)
 {
     for (auto listener : listeners_)
     {
-        listener->NoteOnViaSequencer(offset, trackIndexes, currentStep_);
+        listener->NoteOnViaSequencer(offset + currentFrame_, trackIndexes, currentStep_);
     }
 }
 
@@ -197,7 +197,7 @@ Sequencer::ProcessTrigger(int offset)
                     triggeredTracks.push_back(trackNo);
                 }
             }
-            this->ProcessTrigger(offset + currentFrame_, triggeredTracks);
+            this->ProcessTrigger(offset, triggeredTracks);
         }
         trigger_ = false;
     }
