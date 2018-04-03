@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 
         _engine.onTriggerdCallback = {
             (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
-            print("\(absoluteTime): <\(stepNo)> \(tracks)")
+            print("\(absoluteTime - mach_absolute_time()): <\(stepNo)> \(tracks)")
         }
     }
 

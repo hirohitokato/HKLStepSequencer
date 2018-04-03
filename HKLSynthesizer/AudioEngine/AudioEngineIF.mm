@@ -19,16 +19,17 @@
 
 class SequencerConnector : public SequencerListener {
     AudioEngineIF *receiver_;
+    AudioIO *io_;
     int respondableToSelector_;
 public:
-    SequencerConnector(AudioEngineIF *receiver) :
-    receiver_(receiver), respondableToSelector_(-1) {}
+    SequencerConnector(AudioEngineIF *receiver, AudioIO *io) :
+    receiver_(receiver), io_(io), respondableToSelector_(-1) {}
 
-    void    NoteOnViaSequencer(int /*frame*/, const std::vector<int> &parts, int step) {
+    void    NoteOnViaSequencer(int offset, const std::vector<int> &parts, int step) {
 
-        uint64_t now = mach_absolute_time();
+        uint64_t triggeredTime = io_->GetHostTime() + offset;
         if (respondableToSelector_ == -1) {
-            respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:didTriggeredTracks:step:atTime:)];
+            respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:willTriggerTracks:step:atTime:)];
         }
         if (respondableToSelector_) {
             NSMutableArray<NSNumber *>* tracks = [@[] mutableCopy];
@@ -38,9 +39,9 @@ public:
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [receiver_.delegate audioEngine:receiver_
-                             didTriggeredTracks:tracks
+                              willTriggerTracks:tracks
                                            step:step
-                                         atTime:now];
+                                         atTime:triggeredTime];
             });
         }
     }
@@ -71,16 +72,16 @@ public:
         self.tempo = 120.0f;
 
         const float fs = 44100.0f;
+        _audioIo = new AudioIO(fs);
         _synth = new Synthesizer(fs);
         _sequencer = new Sequencer(fs,
                                    numTracks/*tracks*/,
                                    numSteps/*steps*/,
                                    stepsPerBeat/*stepsPerBeat*/);
-        _audioIo = new AudioIO(fs);
-        _connector = new SequencerConnector(self);
+        _connector = new SequencerConnector(self, _audioIo);
 
-        _synth->SetSequencer(_sequencer);
         _sequencer->AddListener(_connector);
+        _synth->SetSequencer(_sequencer);
         _audioIo->SetListener(_synth);
 
         _audioIo->Open();

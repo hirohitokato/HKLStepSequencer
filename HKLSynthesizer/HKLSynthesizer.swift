@@ -113,7 +113,7 @@ public class HKLSynthesizer: NSObject {
 }
 
 extension HKLSynthesizer: AudioEngineIFProtocol {
-    public func audioEngine(_ engine: AudioEngineIF, didTriggeredTracks tracks: [NSNumber], step stepNo: Int32, atTime absoluteTime: UInt64) {
+    public func audioEngine(_ engine: AudioEngineIF, willTriggerTracks tracks: [NSNumber], step stepNo: Int32, atTime absoluteTime: UInt64) {
         guard let callback = onTriggerdCallback else { return }
 
         let intStepNo = Int(stepNo)
