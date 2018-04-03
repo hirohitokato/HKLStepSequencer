@@ -37,7 +37,7 @@ public class HKLSynthesizer: NSObject {
     ///   - numOfTracks: The number of tracks the sequencer has
     ///   - numOfSteps: The number of steps in a track
     ///   - stepsPerBeat: The number of steps in one beat
-    public init(numOfTracks: Int, numOfSteps: Int, stepsPerBeat: Int) {
+    public init(numOfTracks: Int, numOfSteps: Int, stepsPerBeat: Int=1) {
         engine_ = AudioEngineIF(numOfTracks: Int32(numOfTracks),
                                 numOfSteps: Int32(numOfSteps),
                                 stepsPerBeat: Int32(stepsPerBeat))
