@@ -1,7 +1,7 @@
 # HKLSynthesizer
 <a href="https://developer.apple.com/"><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /></a>
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4.1-compatible-4BC51D.svg?style=flat" alt="Swift 4.1 compatible" /></a>
-<a href="https://cocoapods.org/pods/HKLSynthesizer"><img src="https://img.shields.io/badge/pod-0.7.5-blue.svg" alt="CocoaPods compatible" /></a>
+<a href="https://cocoapods.org/pods/HKLSynthesizer"><img src="https://img.shields.io/badge/pod-0.9.0-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
 <a href="https://raw.githubusercontent.com/hirohitokato/HKLSynthesizer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
 
@@ -16,12 +16,48 @@ Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmb
 
 # How to use
 
-- Instantiate a AudioEngineIF object and use it.
+- Instantiate a AudioEngineIF object and use it. 
 
 ```swift
 import HKLSynthesizer
 
-let engine_ = AudioEngineIF()
+// 1. Create 16steps x 4tracks synthesizer
+let engine = HKLSynthesizer(numOfTracks: 4, numOfSteps: 16)
+engine.tempo = 120
+
+// 2. Load sounds
+engine.sounds = ["kick.wav", "snare.wav", "zap.wav", "noiz.wav"]
+
+// 3. Set step sequences
+var track0 = [Bool](repeating: false, count: engine.numberOfSteps)
+var track1 = [Bool](repeating: false, count: engine.numberOfSteps)
+var track2 = [Bool](repeating: false, count: engine.numberOfSteps)
+var track3 = [Bool](repeating: false, count: engine.numberOfSteps)
+
+for i in 0 ..< engine.numberOfSteps {
+    track0[i] = ((i % 4) == 0) // kick
+    track1[i] = ((i % 3) == 0) // snare
+    track2[i] = ((i % 2) == 0) // zap
+    track3[i] = ((i % 1) == 0) // noiz
+}
+engine.setStepSequence(track0, ofTrack: 0)
+engine.setStepSequence(track1, ofTrack: 1)
+engine.setStepSequence(track2, ofTrack: 2)
+engine.setStepSequence(track3, ofTrack: 3)
+
+// 4. Start playing
+engine.start()
+```
+
+- Can change each track's pan position & gain
+
+```swift
+// track0: left, track1: right, other: center(0.0)
+engine.setPanPosition(-1.0/*left*/,  ofTrack: 0)
+engine.setPanPosition( 1.0/*right*/, ofTrack: 1)
+
+// track2 gain: x2.0(0.0-2.0)
+engine.setAmpGain(2.0, ofTrack: 2)
 ```
 
 # Methods
