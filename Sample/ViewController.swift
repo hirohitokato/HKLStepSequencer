@@ -27,6 +27,11 @@ class ViewController: UIViewController {
 
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
+
+        _engine.onTriggerdCallback = {
+            (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
+            print("\(absoluteTime): <\(stepNo)> \(tracks)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +40,6 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-    }
-}
-
-extension Array where Element == Bool {
-    var nsArray: [NSNumber] {
-        return self.map{ NSNumber(value:$0) }
     }
 }
 
@@ -57,10 +56,10 @@ extension ViewController {
         var track3 = [Bool](repeating: false, count: _engine.numberOfSteps)
 
         for i in 0 ..< _engine.numberOfSteps {
-            track0[i] = ((i % 4) == 0)
-            track1[i] = ((i % 8) == 0)
-            track2[i] = ((i % 2) == 0)
-            track3[i] = ((i % 1) == 0)
+            track0[i] = ((i % 4) == 0) // kick
+            track1[i] = ((i % 3) == 0) // snare
+            track2[i] = ((i % 2) == 0) // zap
+            track3[i] = ((i % 1) == 0) // noiz
         }
         _engine.setStepSequence(track0, ofTrack: 0)
         _engine.setStepSequence(track1, ofTrack: 1)
@@ -96,14 +95,3 @@ extension ViewController {
     }
 }
 
-extension ViewController: AudioEngineIFProtocol {
-    func audioEngine(_ engine: AudioEngineIF,
-        didTriggeredTracks tracks: [NSNumber],
-        step stepNo: Int32,
-        atTime absoluteTime: UInt64)
-    {
-        print("\(tracks)")
-        DispatchQueue.main.async {
-        }
-    }
-}
