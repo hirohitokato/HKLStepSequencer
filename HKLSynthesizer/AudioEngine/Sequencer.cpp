@@ -18,11 +18,11 @@
 //  ---------------------------------------------------------------------------
 //      Sequencer::Sequencer
 //  ---------------------------------------------------------------------------
-Sequencer::Sequencer(float samplingRate) :
+Sequencer::Sequencer(float samplingRate, int numberOfTracks, int numberOfSteps, int stepsPerBeat) :
 samplingRate_(samplingRate),
-numberOfTracks_(4),
-numberOfSteps_(12), // 全体で12ステップのシーケンサー(mutable)
-stepsPerBeats_(12), // 1ビートで12拍(3連符と4連符の最小公倍数)
+numberOfTracks_(numberOfTracks),
+numberOfSteps_(numberOfSteps),
+stepsPerBeat_(stepsPerBeat),
 isRunning_(false),
 currentStep_(0),
 stepFrameLength_(0),
@@ -80,7 +80,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
                 const float tempo = event.floatValue;
                 currentStep_ = 0;
                 currentFrame_ = 0;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeats_;
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeat_;
                 trigger_ = true;
                 isRunning_ = true;
             }
@@ -95,7 +95,7 @@ Sequencer::ProcessCommand(SeqCommandEvent& event)
             if (1)
             {
                 const float tempo = event.floatValue;
-                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeats_;
+                stepFrameLength_ = samplingRate_ * 60.0f / tempo / stepsPerBeat_;
             }
             break;
         case kSeqCommand_UpdateNumSteps:

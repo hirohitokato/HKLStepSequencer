@@ -18,7 +18,7 @@ public:
 class Sequencer
 {
 public:
-    Sequencer(float sampleRate);
+    Sequencer(float sampleRate, int numberOfTracks, int numberOfSteps, int stepsPerBeat);
     ~Sequencer(void);
 
     void    AddListener(SequencerListener* listener);
@@ -59,7 +59,7 @@ private:
     const float samplingRate_;
     int     numberOfTracks_;
     int     numberOfSteps_;
-    int     stepsPerBeats_;
+    const int stepsPerBeat_;
     bool    isRunning_;
     int     currentStep_;
     float   stepFrameLength_;

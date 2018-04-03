@@ -67,7 +67,7 @@ public:
 
         const float fs = 44100.0f;
         _synth = new Synthesizer(fs);
-        _sequencer = new Sequencer(fs);
+        _sequencer = new Sequencer(fs, 4/*tracks*/, 12/*steps*/, 12/*stepsPerBeat*/); // 1ビートで12拍(3連符と4連符の最小公倍数)
         _audioIo = new AudioIO(fs);
         _connector = new SequencerConnector(self);
 
