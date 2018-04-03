@@ -47,6 +47,10 @@ public:
     }
 };
 
+static inline uint64_t now() {
+    return mach_absolute_time();
+}
+
 @interface AudioEngineIF ()
 @property (nonatomic) Synthesizer*        synth;
 @property (nonatomic) AudioIO*            audioIo;
@@ -130,7 +134,7 @@ public:
     _tempo = static_cast<float>(static_cast<int>(tempo * 10)) / 10;
     if (_sequencer != nullptr)
     {
-        _sequencer->UpdateTempo([self now], static_cast<float>(_tempo));
+        _sequencer->UpdateTempo(now(), static_cast<float>(_tempo));
     }
 }
 
@@ -141,7 +145,7 @@ public:
 {
     _numSteps = numSteps;
     if (_sequencer != nullptr) {
-        _sequencer->UpdateNumSteps([self now], static_cast<int>(_numSteps));
+        _sequencer->UpdateNumSteps(now(), static_cast<int>(_numSteps));
     }
 }
 
@@ -225,7 +229,7 @@ public:
 {
     if (_synth != nullptr)
     {
-        _synth->StartSequence([self now], static_cast<float>(_tempo));
+        _synth->StartSequence(now(), static_cast<float>(_tempo));
     }
 }
 
@@ -236,18 +240,8 @@ public:
 {
     if (_synth != nullptr)
     {
-        _synth->StopSequence([self now]);
+        _synth->StopSequence(now());
     }
 }
-
-//  ---------------------------------------------------------------------------
-//      now
-//  ---------------------------------------------------------------------------
-- (uint64_t)now
-{
-    return mach_absolute_time();
-}
-
-#pragma mark private methods
 
 @end
