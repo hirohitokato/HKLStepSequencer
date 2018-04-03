@@ -1,6 +1,6 @@
 # HKLSynthesizer
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
-<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat" alt="Swift 2 compatible" /></a>
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift4.1-compatible-4BC51D.svg?style=flat" alt="Swift 2 compatible" /></a>
 <a href="https://cocoapods.org/pods/HKLSynthesizer"><img src="https://img.shields.io/badge/pod-0.7.5-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
 <a href="https://raw.githubusercontent.com/hirohitokato/HKLSynthesizer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
@@ -13,14 +13,15 @@ Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmb
 - gain & pan parameters for each track
 - supports 44100Hz/16bits linearPCM audio data
 - suports over 1000bpm(actually, there is no limit)
-- supports both Swift & Objective-C
+- supports Swift
 
 # How to use
 
-- `import HKLSynthesizer` (if you use Objective-C, import AudioEngineIF.h)
 - Instantiate a AudioEngineIF object and use it.
 
 ```swift
+import HKLSynthesizer
+
 let engine_ = AudioEngineIF()
 ```
 

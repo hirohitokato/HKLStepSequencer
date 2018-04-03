@@ -9,16 +9,20 @@
 import Foundation
 
 public class HKLSynthesizer: NSObject {
+    /// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+    ///
+    /// - Parameters:
+    ///   - tracks: an array of tracks that the note is now ON
+    ///   - stepNo: the index of current step
+    ///   - absoluteTime: host time when the note is triggered
     public typealias TriggerdCallback = (_ tracks: [Int], _ stepNo: Int, _ absoluteTime: UInt64) -> ()
 
-    /**
-     * A callback from the audio engine to tell that the sequencer has triggered at the step(time).
-     *
-     *  @param engine       the audio engine that the tracks are triggered
-     *  @param tracks       tracks that the note is ON
-     *  @param stepNo       step number
-     *  @param absoluteTime time for triggered
-     */
+    /// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+    ///
+    /// - Parameters:
+    ///   - tracks: an array of tracks that the note is now ON
+    ///   - stepNo: the index of current step
+    ///   - absoluteTime: host time when the note is triggered
     public var onTriggerdCallback: TriggerdCallback?
 
     private let engine_: AudioEngineIF
@@ -42,82 +46,67 @@ public class HKLSynthesizer: NSObject {
         engine_.delegate = self
     }
 
-    /**
-     *  bpm
-     */
+    /// bpm
     public var tempo: Double {
         get { return engine_.tempo }
         set { engine_.tempo = newValue }
     }
 
-    /**
-     *  number of steps in a track
-     */
+    /// number of steps in a track
     public var numberOfSteps: Int {
         get { return engine_.numSteps }
         set { engine_.numSteps = newValue }
     }
 
-    /**
-     *  Sound files. The number of sounds must be equal to the number of tracks
-     */
+    ///  Sound files for each track. The number of sounds must be equal to the number of tracks
     public var sounds: [String]? {
         get { return engine_.sounds }
         set { engine_.sounds = newValue }
     }
 
-    /**
-     *  Set sequence for the specified track.
-     *
-     *  The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
-     *
-     *  @param sequence array of bool values. true means note on.
-     *  @param trackNo  track number
-     */
+    /// Set sequence for the specified track.
+    ///
+    /// The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
+    ///
+    /// - Parameters:
+    ///   - sequence: an array of bool values. true means note on.
+    ///   - trackNo: target track number
     public func setStepSequence(_ sequence: [Bool], ofTrack trackNo: Int) {
         let seq = sequence.map{ NSNumber(value: $0) }
         engine_.setStepSequence(seq, ofTrack: trackNo)
     }
 
-    /**
-     *  Erase all individual status of the specified track
-     *
-     *  @param trackNo track number
-     */
+    /// Erase all notes(ON/OFF) of the specified track
+    ///
+    /// - Parameter trackNo: target track number
     public func clearSequence(ofTrackNo trackNo: Int) {
         engine_.clearSequence(trackNo)
     }
 
-    /**
-     *  Set amplifier gain(0.0-2.0) for the specified track
-     *
-     *  @param ampGain 0.0(mute)…1.0(original)…2.0(x2.0)
-     *  @param trackNo track number
-     */
+    /// Set amplifier gain(0.0-2.0) for the specified track
+    ///
+    /// - Parameters:
+    ///   - ampGain: 0.0(mute)…1.0(as is)…2.0(x2.0)
+    ///   - trackNo: target track number
     public func setAmpGain(_ ampGain: Double, ofTrack trackNo: Int) {
         engine_.setAmpGain(ampGain, ofTrack: trackNo)
     }
 
-    /**
-     *  Set pan position(-1.0…1.0) for the specified track.
-     *
-     *  @param position -1.0(left)…0.0(center)…1.0(right)
-     *  @param trackNo  track number
-     */
+    /// Set pan position(-1.0…1.0) for the specified track.
+    ///
+    /// - Parameters:
+    ///   - position: -1.0(left)…0.0(center)…1.0(right)
+    ///   - trackNo: target track number
     public func setPanPosition(_ position: Double, ofTrack trackNo: Int) {
         engine_.setPanPosition(position, ofTrack: trackNo)
     }
 
-    /**
-     *  Start a sequencer
-     */
+    /// Start the sequencer
     public func start() {
         engine_.start()
     }
 
-    /**
-     *  Stop a sequencer
-     */
+    /// Stop the sequencer
     public func stop() {
         engine_.stop()
     }
