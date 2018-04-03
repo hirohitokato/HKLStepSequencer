@@ -5,6 +5,7 @@
 //  Created by Nobuhisa Okamura on 11/05/19.
 //  Copyright 2011 KORG INC. All rights reserved.
 //
+#include <string>
 
 #include <AudioToolbox/AudioToolbox.h>
 #include "DrumOscillator.h"
@@ -189,9 +190,11 @@ DrumOscillator::Process(int16_t** output, int length)
 //      DrumOscillator::LoadAudioFileInResourceFolder
 //  ---------------------------------------------------------------------------
 void
-DrumOscillator::LoadAudioFileInResourceFolder(CFStringRef path)
+DrumOscillator::LoadAudioFileInResourceFolder(const std::string &filename)
 {
-    NSString*   resourcePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:(NSString*)CFBridgingRelease(path)];
+    NSString*   nsFile = [NSString stringWithCString:filename.c_str() encoding:NSUTF8StringEncoding];
+    NSString*   resourcePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:nsFile];
+
     this->LoadAudioFile((CFStringRef)CFBridgingRetain(resourcePath));
 }
 

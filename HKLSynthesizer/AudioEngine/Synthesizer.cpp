@@ -210,9 +210,7 @@ Synthesizer::SetSoundSet(const std::vector<std::string> &soundfiles)
 
     for (const auto &soundfile: soundfiles) {
         DrumOscillator* osc = new DrumOscillator(samplingRate_);
-        CFStringRef wavFile = CFStringCreateWithCString(kCFAllocatorDefault,
-                                                        soundfile.c_str(), kCFStringEncodingUTF8);
-        osc->LoadAudioFileInResourceFolder(wavFile);
+        osc->LoadAudioFileInResourceFolder(soundfile);
         osc->SetPanPosition(64);
         oscillators_.push_back(osc);
     }

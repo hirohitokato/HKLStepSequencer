@@ -26,7 +26,7 @@ public:
     void    Process(int16_t** output, int length);
     void    TriggerOn(void);
 
-    void    LoadAudioFileInResourceFolder(CFStringRef path);
+    void    LoadAudioFileInResourceFolder(const std::string &filename);
 
 private:
     void    LoadAudioFile(CFStringRef path);
