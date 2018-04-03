@@ -12,7 +12,7 @@ public class HKLSynthesizer: NSObject {
     public typealias TriggerdCallback = (_ tracks: [Int], _ stepNo: Int, _ absoluteTime: UInt64) -> ()
 
     /**
-     * callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+     * A callback from the audio engine to tell that the sequencer has triggered at the step(time).
      *
      *  @param engine       the audio engine that the tracks are triggered
      *  @param tracks       tracks that the note is ON

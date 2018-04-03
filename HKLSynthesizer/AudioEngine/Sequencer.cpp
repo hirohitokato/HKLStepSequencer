@@ -31,9 +31,6 @@ commandsMutex_()
 {
     // 各ステップの再生有無をstd::vector<bool>で記憶するトラックを4本作成
     SetupTracks();
-
-    // 各トラックの再生タイミングをデフォルト値で作成
-    this->SetDefault();
 }
 
 //  ---------------------------------------------------------------------------
@@ -41,37 +38,6 @@ commandsMutex_()
 //  ---------------------------------------------------------------------------
 Sequencer::~Sequencer(void)
 {
-}
-
-//  ---------------------------------------------------------------------------
-//      Sequencer::Set
-//  ---------------------------------------------------------------------------
-void
-Sequencer::Set(int trackNo, int stepNo, bool sw)
-{
-    if ((trackNo >= 0) && (trackNo < static_cast<int>(seq_.size())))
-    {
-        std::vector<bool>&   track = seq_[trackNo];
-        if ((stepNo >= 0) && (stepNo < static_cast<int>(track.size())))
-        {
-            track[stepNo] = sw;
-        }
-    }
-}
-
-//  ---------------------------------------------------------------------------
-//      Sequencer::SetDefault
-//  ---------------------------------------------------------------------------
-void
-Sequencer::SetDefault(void)
-{
-    for (int step = 0; step < numberOfSteps_; ++step)
-    {
-        this->Set(0, step, ((step % 4) == 0));  // トラック1 - kick.wav
-        this->Set(1, step, ((step % 8) == 0));  // トラック2 - snare.wav
-        this->Set(2, step, ((step % 2) == 0));  // トラック3 - zap.wav
-        this->Set(3, step, true);               // トラック4 - noiz.wav
-    }
 }
 
 //  ---------------------------------------------------------------------------
@@ -200,9 +166,9 @@ Sequencer::ProcessCommands(AudioIO* io, int offset, int length)
 inline void
 Sequencer::ProcessTrigger(int offset, const std::vector<int> &trackIndexes)
 {
-    for (auto obj : listeners_)
+    for (auto listener : listeners_)
     {
-        obj->NoteOnViaSequencer(offset, trackIndexes, currentStep_);
+        listener->NoteOnViaSequencer(offset, trackIndexes, currentStep_);
     }
 }
 

@@ -41,8 +41,6 @@ private:
     const Sequencer& operator= (const Sequencer& other);    //  not implemented
 
     void    SetupTracks(void);
-    void    SetDefault(void);
-    void    Set(int trackNo, int stepNo, bool sw);
 
     typedef struct {
         uint64_t    hostTime;
