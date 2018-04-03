@@ -20,15 +20,15 @@
 class SequencerConnector : public SequencerListener {
     AudioEngineIF *receiver_;
     AudioIO *io_;
-    int respondableToSelector_;
+    BOOL respondableToSelector_;
 public:
     SequencerConnector(AudioEngineIF *receiver, AudioIO *io) :
-    receiver_(receiver), io_(io), respondableToSelector_(-1) {}
+    receiver_(receiver), io_(io), respondableToSelector_(NO) {}
 
     void    NoteOnViaSequencer(int offset, const std::vector<int> &parts, int step) {
 
         uint64_t triggeredTime = io_->GetHostTime() + offset;
-        if (respondableToSelector_ == -1) {
+        if (respondableToSelector_ == NO) {
             respondableToSelector_ = [receiver_.delegate respondsToSelector:@selector(audioEngine:willTriggerTracks:step:atTime:)];
         }
         if (respondableToSelector_) {
@@ -70,19 +70,20 @@ public:
     if (self != nil)
     {
         self.tempo = 120.0f;
-
         const float fs = 44100.0f;
+
         _audioIo = new AudioIO(fs);
         _synth = new Synthesizer(fs);
         _sequencer = new Sequencer(fs,
                                    numTracks/*tracks*/,
                                    numSteps/*steps*/,
                                    stepsPerBeat/*stepsPerBeat*/);
-        _connector = new SequencerConnector(self, _audioIo);
 
-        _sequencer->AddListener(_connector);
-        _synth->SetSequencer(_sequencer);
         _audioIo->SetListener(_synth);
+        _synth->SetSequencer(_sequencer);
+
+        _connector = new SequencerConnector(self, _audioIo);
+        _sequencer->AddListener(_connector);
 
         _audioIo->Open();
         _audioIo->Start();
