@@ -21,9 +21,23 @@ public class HKLSynthesizer: NSObject {
      */
     public var onTriggerdCallback: TriggerdCallback?
 
-    private let engine_ = AudioEngineIF()
+    private let engine_: AudioEngineIF
 
-    public override init() {
+    private override init() {
+        fatalError("Unable to initialize HKLSynthesizer with init()")
+    }
+
+    /// Instantiate a object and initialize it.
+    ///
+    /// - Parameters:
+    ///   - numOfTracks: The number of tracks the sequencer has
+    ///   - numOfSteps: The number of steps in a track
+    ///   - stepsPerBeat: The number of steps in one beat
+    public init(numOfTracks: Int, numOfSteps: Int, stepsPerBeat: Int) {
+        engine_ = AudioEngineIF(numOfTracks: Int32(numOfTracks),
+                                numOfSteps: Int32(numOfSteps),
+                                stepsPerBeat: Int32(stepsPerBeat))
+
         super.init()
         engine_.delegate = self
     }

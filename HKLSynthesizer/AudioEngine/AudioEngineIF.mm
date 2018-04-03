@@ -55,10 +55,15 @@ public:
 
 @implementation AudioEngineIF
 
-//  ---------------------------------------------------------------------------
-//      initWithNibName:bundle
-//  ---------------------------------------------------------------------------
-- (id)init
+- (instancetype)init
+{
+    NSAssert(false, @"AudioEngineIF must be initialized with public API.");
+    return nil;
+}
+
+- (instancetype)initWithNumOfTracks:(int)numTracks
+                         numOfSteps:(int)numSteps
+                       stepsPerBeat:(int)stepsPerBeat;
 {
     self = [super init];
     if (self != nil)
@@ -67,7 +72,10 @@ public:
 
         const float fs = 44100.0f;
         _synth = new Synthesizer(fs);
-        _sequencer = new Sequencer(fs, 4/*tracks*/, 12/*steps*/, 12/*stepsPerBeat*/); // 1ビートで12拍(3連符と4連符の最小公倍数)
+        _sequencer = new Sequencer(fs,
+                                   numTracks/*tracks*/,
+                                   numSteps/*steps*/,
+                                   stepsPerBeat/*stepsPerBeat*/);
         _audioIo = new AudioIO(fs);
         _connector = new SequencerConnector(self);
 

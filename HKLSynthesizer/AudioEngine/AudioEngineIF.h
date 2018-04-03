@@ -26,6 +26,10 @@
  */
 @property (nonatomic, copy) NSArray<NSString*>* _Nullable sounds;
 
+- (instancetype _Nonnull)initWithNumOfTracks:(int)numTracks
+                                  numOfSteps:(int)numSteps
+                                stepsPerBeat:(int)stepsPerBeat;
+
 /**
  *  Set sequence for the specified track.
  *
