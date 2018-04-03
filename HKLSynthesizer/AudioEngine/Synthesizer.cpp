@@ -188,18 +188,6 @@ Synthesizer::StopSequence(uint64_t hostTime)
 }
 
 //  ---------------------------------------------------------------------------
-//      Synthesizer::UpdateTempo
-//  ---------------------------------------------------------------------------
-void
-Synthesizer::UpdateTempo(uint64_t hostTime, float tempo)
-{
-    if (seq_ != NULL)
-    {
-        seq_->UpdateTempo(hostTime, tempo);
-    }
-}
-
-//  ---------------------------------------------------------------------------
 //      Synthesizer::CleanupOscillators
 //  ---------------------------------------------------------------------------
 void

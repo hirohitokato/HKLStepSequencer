@@ -31,7 +31,6 @@ public:
 
     void    StartSequence(uint64_t hostTime, float tempo);
     void    StopSequence(uint64_t hostTime);
-    void    UpdateTempo(uint64_t hostTime, float tempo);
 
     void    SetSoundSet(const std::vector<std::string> &soundfiles);
 

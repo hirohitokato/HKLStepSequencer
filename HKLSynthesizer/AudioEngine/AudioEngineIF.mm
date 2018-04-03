@@ -112,9 +112,9 @@ public:
 - (void)setTempo:(double)tempo
 {
     _tempo = static_cast<float>(static_cast<int>(tempo * 10)) / 10;
-    if (_synth != nullptr)
+    if (_sequencer != nullptr)
     {
-        _synth->UpdateTempo([self now], static_cast<float>(_tempo));
+        _sequencer->UpdateTempo([self now], static_cast<float>(_tempo));
     }
 }
 
@@ -124,7 +124,7 @@ public:
 - (void)setNumSteps:(NSInteger)numSteps
 {
     _numSteps = numSteps;
-    if (_synth != nullptr) {
+    if (_sequencer != nullptr) {
         _sequencer->UpdateNumSteps([self now], static_cast<int>(_numSteps));
     }
 }
