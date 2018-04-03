@@ -28,9 +28,16 @@ class ViewController: UIViewController {
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
 
+        var info = mach_timebase_info(numer: 0, denom: 0)
+        mach_timebase_info(&info)
+        let numer = UInt64(info.numer)
+        let denom = UInt64(info.denom)
+
         _engine.onTriggerdCallback = {
             (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
-            print("\(absoluteTime - mach_absolute_time()): <\(stepNo)> \(tracks)")
+            let t_ns = ((absoluteTime - mach_absolute_time()) * numer) / denom
+            let t_sec = Double(t_ns) / 1_000_000_000
+            print("<\(stepNo)> \(tracks) will fire after \(t_sec)sec")
         }
     }
 
