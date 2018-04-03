@@ -6,6 +6,7 @@
 //  Copyright 2011 KORG INC. All rights reserved.
 //
 #include <string>
+#include <vector>
 
 #include <AudioToolbox/AudioToolbox.h>
 #include "DrumOscillator.h"

@@ -8,13 +8,6 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
-#include "AudioIO.h"
-#include "Sequencer.h"
-
-class DrumOscillator;
-
 class Synthesizer : public AudioIOListener, SequencerListener
 {
 public:

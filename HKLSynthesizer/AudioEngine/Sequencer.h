@@ -8,9 +8,6 @@
 
 #pragma once
 
-#include <vector>
-#include <mutex>
-
 class SequencerListener
 {
 public:

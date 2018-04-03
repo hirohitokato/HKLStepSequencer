@@ -5,11 +5,17 @@
 //  Copyright © 2016 Hirohito Kato. All rights reserved.
 //
 
+#include <string>
+#include <mutex>
+
 #import <mach/mach_time.h>
-#import "AudioEngineIF.h"
+
 #import "AudioIO.h"
-#import "Synthesizer.h"
 #import "Sequencer.h"
+#import "DrumOscillator.h"
+#import "Synthesizer.h"
+
+#import "AudioEngineIF.h"
 
 class SequencerConnector : public SequencerListener {
     AudioEngineIF *receiver_;

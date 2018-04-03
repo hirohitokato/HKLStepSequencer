@@ -6,8 +6,12 @@
 //  Copyright 2011 KORG INC. All rights reserved.
 //
 
-#include <mach/mach_time.h>
+#include <vector>
+#include <mutex>
 #include <algorithm>
+
+#include <mach/mach_time.h>
+
 #include "Sequencer.h"
 #include "AudioIO.h"
 

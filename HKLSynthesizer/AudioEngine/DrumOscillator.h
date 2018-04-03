@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include <vector>
-
 class DrumOscillator
 {
 public:

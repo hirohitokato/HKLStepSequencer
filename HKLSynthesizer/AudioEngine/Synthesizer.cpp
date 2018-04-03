@@ -6,9 +6,16 @@
 //  Copyright 2011 KORG INC. All rights reserved.
 //
 
+#include <string>
+#include <vector>
 #include <algorithm>
-#include "Synthesizer.h"
+#include <mutex>
+
+#include "AudioIO.h"
+#include "Sequencer.h"
 #include "DrumOscillator.h"
+
+#include "Synthesizer.h"
 
 //  ---------------------------------------------------------------------------
 //      Synthesizer::Synthesizer
