@@ -27,6 +27,8 @@ public:
     void    Start(const uint64_t hostTime, const float tempo);
     void    Stop(const uint64_t hostTime);
 
+    int     GetNumTracks();
+
     void    UpdateTempo(const uint64_t hostTime, const float tempo);
     void    UpdateNumSteps(const uint64_t hostTime, const int numberOfSteps);
     void    UpdateTrack(const int trackNo, const std::vector<bool> &sequence);

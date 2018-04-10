@@ -52,6 +52,12 @@ public class HKLSynthesizer: NSObject {
         set { engine_.tempo = newValue }
     }
 
+    /// number of tracks the sequencer has
+    public var numberOfTracks: Int {
+        get { return engine_.numTracks }
+        set { engine_.numTracks = newValue }
+    }
+
     /// number of steps in a track
     public var numberOfSteps: Int {
         get { return engine_.numSteps }

@@ -56,6 +56,9 @@ static inline uint64_t now() {
 @property (nonatomic) AudioIO*            audioIo;
 @property (nonatomic) SequencerConnector* connector;
 @property (nonatomic) Sequencer*          sequencer;
+
+@property (nonatomic, readwrite) float    frequency;
+@property (nonatomic) NSInteger           stepsPerBeat;
 @end
 
 @implementation AudioEngineIF
@@ -73,15 +76,17 @@ static inline uint64_t now() {
     self = [super init];
     if (self != nil)
     {
-        self.tempo = 120.0f;
-        const float fs = 44100.0f;
+        _tempo = 120.0f;
+        _frequency = 44100.0f;
+        _numSteps = numSteps;
+        _stepsPerBeat = stepsPerBeat;
 
-        _audioIo = new AudioIO(fs);
-        _synth = new Synthesizer(fs);
-        _sequencer = new Sequencer(fs,
+        _audioIo = new AudioIO(_frequency);
+        _synth = new Synthesizer(_frequency);
+        _sequencer = new Sequencer(_frequency,
                                    numTracks/*tracks*/,
-                                   numSteps/*steps*/,
-                                   stepsPerBeat/*stepsPerBeat*/);
+                                   (int)_numSteps/*steps*/,
+                                   (int)_stepsPerBeat/*stepsPerBeat*/);
 
         _audioIo->SetListener(_synth);
         _synth->SetSequencer(_sequencer);
@@ -135,6 +140,34 @@ static inline uint64_t now() {
     if (_sequencer != nullptr)
     {
         _sequencer->UpdateTempo(now(), static_cast<float>(_tempo));
+    }
+}
+
+//  ---------------------------------------------------------------------------
+//      numTracks
+//  ---------------------------------------------------------------------------
+- (NSInteger)numTracks
+{
+    if (_sequencer != nullptr) {
+        return _sequencer->GetNumTracks();
+    }
+    return -1;
+}
+- (void)setNumTracks:(NSInteger)numTracks
+{
+    if (_synth != nullptr) {
+        _synth->StopSequence(now());
+
+        if (_sequencer != nullptr) {
+            delete _sequencer;
+        }
+        _sequencer = new Sequencer(_frequency,
+                                   (int)numTracks/*tracks*/,
+                                   (int)_numSteps/*steps*/,
+                                   (int)_stepsPerBeat/*stepsPerBeat*/);
+        _synth->SetSequencer(_sequencer);
+        _sequencer->AddListener(_connector);
+
     }
 }
 

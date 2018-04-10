@@ -17,9 +17,19 @@
 @property (nonatomic, assign) double tempo;
 
 /**
+ *  number of tracks
+ */
+@property (nonatomic, assign) NSInteger numTracks;
+
+/**
  *  number of steps in a track
  */
 @property (nonatomic, assign) NSInteger numSteps;
+
+/**
+ *  number of steps in a beat
+ */
+@property (nonatomic, readonly) NSInteger stepsPerBeat;
 
 /**
  *  Sound files. The number of sounds must be equal to the number of tracks
