@@ -117,7 +117,7 @@ extension HKLSynthesizer: AudioEngineIFProtocol {
         guard let callback = onTriggerdCallback else { return }
 
         let intStepNo = Int(stepNo)
-        let intTracks = tracks.compactMap { return $0.intValue }
+        let intTracks = tracks.flatMap { return $0.intValue }
         callback(intTracks, intStepNo, absoluteTime)
     }
 }
