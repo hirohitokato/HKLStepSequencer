@@ -17,16 +17,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var _stepLabel: UILabel!
     @IBOutlet weak var _stepSlider: UISlider!
 
+    @IBOutlet var _tracks: [UIStackView]!
+    var _notes = [[Bool]]()
+
     let BPM_MIN = 30.0
     let BPM_MAX = 300.0
 
-    let _engine = HKLStepSequencer(numOfTracks: 4, numOfSteps: 12, stepsPerBeat: 12)
+    let _engine = HKLStepSequencer(numOfTracks: 4, numOfSteps: 8)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
+
+        setupTrackUI()
 
         var info = mach_timebase_info(numer: 0, denom: 0)
         mach_timebase_info(&info)
@@ -47,6 +52,33 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+    }
+
+    private func setupTrackUI() {
+        for (i, track) in _tracks.enumerated() {
+            let trackNotes = [Bool](repeating: false, count: 8)
+            _notes.append(trackNotes)
+
+            for j in 0..<8 {
+                let button = UIButton(type: .custom)
+                button.tag = i * 100 + j
+                button.backgroundColor = .white
+                button.layer.borderColor = UIColor.gray.cgColor
+                button.layer.borderWidth = 1
+                button.layer.cornerRadius = 4
+                button.addTarget(self, action: #selector(tappedButton(_:)), for: .touchDown)
+                track.addArrangedSubview(button)
+            }
+        }
+    }
+    @objc public func tappedButton(_ sender: UIButton) {
+        let track = sender.tag / 100
+        let step = sender.tag % 100
+
+        _notes[track][step] = !_notes[track][step]
+        sender.backgroundColor = _notes[track][step] ? .red : .white
+
+        _engine.setStepSequence(_notes[track], ofTrack: track)
     }
 }
 

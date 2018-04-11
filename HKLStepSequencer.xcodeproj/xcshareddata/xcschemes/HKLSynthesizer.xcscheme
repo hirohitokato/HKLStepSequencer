@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1A2BC3CA1C3FF95B007F65D7"
-               BuildableName = "HKLSynthesizer.xctest"
+               BuildableName = "HKLStepSequencer.xctest"
                BlueprintName = "HKLStepSequencerTests"
                ReferencedContainer = "container:HKLStepSequencer.xcodeproj">
             </BuildableReference>
