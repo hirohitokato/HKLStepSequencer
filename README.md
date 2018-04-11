@@ -1,22 +1,31 @@
 # HKLStepSequencer
 <a href="https://developer.apple.com/"><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /></a>
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift_4-compatible-4BC51D.svg?style=flat" alt="Swift 4 compatible" /></a>
-<a href="https://cocoapods.org/pods/HKLStepSequencer"><img src="https://img.shields.io/badge/pod-0.9.0-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
 <a href="https://raw.githubusercontent.com/hirohitokato/HKLStepSequencer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
 
 A step sequencer engine for iOS. It enables you to create a rhythmbox/drum-machine app easily.
 
-# Features
+## Features
 
 - M tracks & N steps sequencer.(depends on your iOS device spec)
 - gain & pan parameters for each track
 - supports 44100Hz/16bits linearPCM audio data
 - supports over 1000bpm(actually, there is no limit)
 
-# How to use
+## Installation
 
-- Instantiate a HKLStepSequencer object and use it. 
+### Carthage
+
+HKLStepSequencer is available through [Carthage](https://github.com/Carthage/Carthage). To install it, simply add the following line to your Cartfile:
+
+```
+github "hirohitokato/HKLStepSequencer"
+```
+
+## How to use
+
+Instantiate a HKLStepSequencer object and use it. 
 
 ```swift
 import HKLStepSequencer
@@ -49,7 +58,7 @@ engine.setStepSequence(track3, ofTrack: 3)
 engine.start()
 ```
 
-- Can change each track's pan position & gain
+Can change each track's pan position & gain
 
 ```swift
 // track0: left, track1: right, other: center(0.0)
@@ -60,7 +69,7 @@ engine.setPanPosition( 1.0/*right*/, ofTrack: 1)
 engine.setAmpGain(2.0, ofTrack: 2)
 ```
 
-- Can trigger event of each step. The callback passes the precise time of step. So you can synchronize animations with sounds.
+Can trigger event of each step. The callback passes the precise time of step. So you can synchronize animations with sounds.
 
 ```swift
 var info = mach_timebase_info(numer: 0, denom: 0)
@@ -76,7 +85,7 @@ engine.onTriggerdCallback = {
 }
 ```
 
-# Methods
+## Methods
 
 - `start()` starts sequencer
 - `stop()` stops running
@@ -164,16 +173,20 @@ public func start()
 public func stop()
 }
 ```
-# Screenshots of sample project
+## Screenshots of sample project
 
 The sample shows 4 tracks & N steps sequencer.
 
 ![screenshot](images/screenshot_0.png)
 
-# License
+## Author
 
-New BSD License
+Hirohito Kato
 
-# Reference
+## License
 
-This library uses [the sample program](https://code.google.com/p/korg-wist-sdk/) of [KORG WIST SDK](http://www.korguser.net/wist/) as audio engine.
+HKLStepSequencer is available under [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file for more info.
+
+## See also
+
+This library is based on [the sample program](https://code.google.com/p/korg-wist-sdk/) of [KORG WIST SDK](http://www.korguser.net/wist/) as audio engine.
