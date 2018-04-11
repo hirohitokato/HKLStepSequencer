@@ -1,9 +1,9 @@
-# HKLSynthesizer
+# HKLStepSequencer
 <a href="https://developer.apple.com/"><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /></a>
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift_4-compatible-4BC51D.svg?style=flat" alt="Swift 4 compatible" /></a>
 <a href="https://cocoapods.org/pods/HKLSynthesizer"><img src="https://img.shields.io/badge/pod-0.9.0-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
-<a href="https://raw.githubusercontent.com/hirohitokato/HKLSynthesizer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
+<a href="https://raw.githubusercontent.com/hirohitokato/HKLStepSequencer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
 
 Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmbox/drum-machine app easily.
 
@@ -16,13 +16,13 @@ Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmb
 
 # How to use
 
-- Instantiate a AudioEngineIF object and use it. 
+- Instantiate a HKLStepSequencer object and use it. 
 
 ```swift
-import HKLSynthesizer
+import HKLStepSequencer
 
 // 1. Create 16steps x 4tracks synthesizer
-let engine = HKLSynthesizer(numOfTracks: 4, numOfSteps: 16)
+let engine = HKLStepSequencer(numOfTracks: 4, numOfSteps: 16)
 engine.tempo = 120
 
 // 2. Load sounds
