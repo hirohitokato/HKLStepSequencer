@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HKLSynthesizer
+import HKLStepSequencer
 
 class ViewController: UIViewController {
 
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let BPM_MIN = 30.0
     let BPM_MAX = 300.0
 
-    let _engine = HKLSynthesizer(numOfTracks: 4, numOfSteps: 12, stepsPerBeat: 12)
+    let _engine = HKLStepSequencer(numOfTracks: 4, numOfSteps: 12, stepsPerBeat: 12)
 
     override func viewDidLoad() {
         super.viewDidLoad()

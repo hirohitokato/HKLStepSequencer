@@ -1,6 +1,6 @@
 //
-//  HKLSynthesizerTests.m
-//  HKLSynthesizerTests
+//  HKLStepSequencerTests.m
+//  HKLStepSequencerTests
 //
 //  Created by Hirohito Kato on 2016/01/08.
 //  Copyright © 2016年 Hirohito Kato. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface HKLSynthesizerTests : XCTestCase
+@interface HKLStepSequencerTests : XCTestCase
 
 @end
 
-@implementation HKLSynthesizerTests
+@implementation HKLStepSequencerTests
 
 - (void)setUp {
     [super setUp];

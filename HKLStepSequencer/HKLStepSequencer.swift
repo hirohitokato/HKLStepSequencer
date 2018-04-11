@@ -1,6 +1,6 @@
 //
-//  HKLSynthesizer.swift
-//  HKLSynthesizer
+//  HKLStepSequencer.swift
+//  HKLStepSequencer
 //
 //  Created by Hirohito Kato on 2018/03/31.
 //  Copyright 2018 Hirohito Kato. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class HKLSynthesizer: NSObject {
+public class HKLStepSequencer: NSObject {
     /// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
     ///
     /// - Parameters:
@@ -28,7 +28,7 @@ public class HKLSynthesizer: NSObject {
     private let engine_: AudioEngineIF
 
     private override init() {
-        fatalError("Unable to initialize HKLSynthesizer with init()")
+        fatalError("Unable to initialize HKLStepSequencer with init()")
     }
 
     /// Instantiate a object and initialize it.
@@ -118,12 +118,12 @@ public class HKLSynthesizer: NSObject {
     }
 }
 
-extension HKLSynthesizer: AudioEngineIFProtocol {
+extension HKLStepSequencer: AudioEngineIFProtocol {
     public func audioEngine(_ engine: AudioEngineIF, willTriggerTracks tracks: [NSNumber], step stepNo: Int32, atTime absoluteTime: UInt64) {
         guard let callback = onTriggerdCallback else { return }
 
         let intStepNo = Int(stepNo)
-        let intTracks = tracks.flatMap { return $0.intValue }
+        let intTracks = tracks.compactMap { return $0.intValue }
         callback(intTracks, intStepNo, absoluteTime)
     }
 }

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A2BC3C51C3FF95B007F65D7 /* HKLSynthesizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3C41C3FF95B007F65D7 /* HKLSynthesizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1A2BC3CC1C3FF95B007F65D7 /* HKLSynthesizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */; };
-		1A2BC3D11C3FF95B007F65D7 /* HKLSynthesizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3D01C3FF95B007F65D7 /* HKLSynthesizerTests.m */; };
+		1A2BC3C51C3FF95B007F65D7 /* HKLStepSequencer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2BC3C41C3FF95B007F65D7 /* HKLStepSequencer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A2BC3CC1C3FF95B007F65D7 /* HKLStepSequencer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */; };
+		1A2BC3D11C3FF95B007F65D7 /* HKLStepSequencerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3D01C3FF95B007F65D7 /* HKLStepSequencerTests.m */; };
 		1A2BC3E91C3FFA50007F65D7 /* AudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */; };
 		1A2BC3EC1C3FFA50007F65D7 /* DrumOscillator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3E01C3FFA50007F65D7 /* DrumOscillator.mm */; };
 		1A2BC3EE1C3FFA50007F65D7 /* Sequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BC3E21C3FFA50007F65D7 /* Sequencer.cpp */; };
@@ -23,14 +23,14 @@
 		1A2BC4081C409FA0007F65D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4061C409FA0007F65D7 /* Main.storyboard */; };
 		1A2BC40A1C409FA0007F65D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4091C409FA0007F65D7 /* Assets.xcassets */; };
 		1A2BC40D1C409FA0007F65D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC40B1C409FA0007F65D7 /* LaunchScreen.storyboard */; };
-		1A2BC4241C40AE36007F65D7 /* HKLSynthesizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */; };
-		1A2BC4251C40AE36007F65D7 /* HKLSynthesizer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A2BC4241C40AE36007F65D7 /* HKLStepSequencer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */; };
+		1A2BC4251C40AE36007F65D7 /* HKLStepSequencer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A2BC42C1C40B089007F65D7 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4281C40B089007F65D7 /* kick.wav */; };
 		1A2BC42D1C40B089007F65D7 /* noiz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC4291C40B089007F65D7 /* noiz.wav */; };
 		1A2BC42E1C40B089007F65D7 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42A1C40B089007F65D7 /* snare.wav */; };
 		1A2BC42F1C40B089007F65D7 /* zap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BC42B1C40B089007F65D7 /* zap.wav */; };
 		1A4575DA1C53519300A4A2D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1A4575D91C53519300A4A2D9 /* LICENSE */; };
-		913FDDD6206F3485007E9A05 /* HKLSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */; };
+		913FDDD6206F3485007E9A05 /* HKLStepSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FDDD5206F3485007E9A05 /* HKLStepSequencer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1A2BC4251C40AE36007F65D7 /* HKLSynthesizer.framework in Embed Frameworks */,
+				1A2BC4251C40AE36007F65D7 /* HKLStepSequencer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,11 +65,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HKLSynthesizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2BC3C41C3FF95B007F65D7 /* HKLSynthesizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKLSynthesizer.h; sourceTree = "<group>"; };
+		1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HKLStepSequencer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2BC3C41C3FF95B007F65D7 /* HKLStepSequencer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKLStepSequencer.h; sourceTree = "<group>"; };
 		1A2BC3C61C3FF95B007F65D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A2BC3CB1C3FF95B007F65D7 /* HKLSynthesizer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKLSynthesizer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2BC3D01C3FF95B007F65D7 /* HKLSynthesizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKLSynthesizerTests.m; sourceTree = "<group>"; };
+		1A2BC3CB1C3FF95B007F65D7 /* HKLStepSequencer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKLStepSequencer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2BC3D01C3FF95B007F65D7 /* HKLStepSequencerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKLStepSequencerTests.m; sourceTree = "<group>"; };
 		1A2BC3D21C3FF95B007F65D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2BC3DC1C3FFA50007F65D7 /* AudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioIO.h; sourceTree = "<group>"; };
 		1A2BC3DD1C3FFA50007F65D7 /* AudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioIO.mm; sourceTree = "<group>"; };
@@ -96,9 +96,9 @@
 		1A2BC42A1C40B089007F65D7 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		1A2BC42B1C40B089007F65D7 /* zap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zap.wav; sourceTree = "<group>"; };
 		1A2C667E1C4D00ED00F1BD85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1A2C667F1C4D083100F1BD85 /* HKLSynthesizer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HKLSynthesizer.podspec; sourceTree = "<group>"; };
+		1A2C667F1C4D083100F1BD85 /* HKLStepSequencer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HKLStepSequencer.podspec; sourceTree = "<group>"; };
 		1A4575D91C53519300A4A2D9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKLSynthesizer.swift; sourceTree = "<group>"; };
+		913FDDD5206F3485007E9A05 /* HKLStepSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKLStepSequencer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2BC3CC1C3FF95B007F65D7 /* HKLSynthesizer.framework in Frameworks */,
+				1A2BC3CC1C3FF95B007F65D7 /* HKLStepSequencer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2BC4241C40AE36007F65D7 /* HKLSynthesizer.framework in Frameworks */,
+				1A2BC4241C40AE36007F65D7 /* HKLStepSequencer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,12 +133,12 @@
 		1A2BC3B71C3FF95B007F65D7 = {
 			isa = PBXGroup;
 			children = (
-				1A2C667F1C4D083100F1BD85 /* HKLSynthesizer.podspec */,
+				1A2C667F1C4D083100F1BD85 /* HKLStepSequencer.podspec */,
 				1A2C667E1C4D00ED00F1BD85 /* README.md */,
 				1A4575D91C53519300A4A2D9 /* LICENSE */,
-				1A2BC3C31C3FF95B007F65D7 /* HKLSynthesizer */,
+				1A2BC3C31C3FF95B007F65D7 /* HKLStepSequencer */,
 				1A2BC4011C409FA0007F65D7 /* Sample */,
-				1A2BC3CF1C3FF95B007F65D7 /* HKLSynthesizerTests */,
+				1A2BC3CF1C3FF95B007F65D7 /* HKLStepSequencerTests */,
 				1A2BC3FB1C3FFFBB007F65D7 /* Frameworks */,
 				1A2BC3C21C3FF95B007F65D7 /* Products */,
 			);
@@ -147,31 +147,31 @@
 		1A2BC3C21C3FF95B007F65D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */,
-				1A2BC3CB1C3FF95B007F65D7 /* HKLSynthesizer.xctest */,
+				1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */,
+				1A2BC3CB1C3FF95B007F65D7 /* HKLStepSequencer.xctest */,
 				1A2BC4001C409FA0007F65D7 /* Sample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A2BC3C31C3FF95B007F65D7 /* HKLSynthesizer */ = {
+		1A2BC3C31C3FF95B007F65D7 /* HKLStepSequencer */ = {
 			isa = PBXGroup;
 			children = (
-				913FDDD5206F3485007E9A05 /* HKLSynthesizer.swift */,
-				1A2BC3C41C3FF95B007F65D7 /* HKLSynthesizer.h */,
+				913FDDD5206F3485007E9A05 /* HKLStepSequencer.swift */,
+				1A2BC3C41C3FF95B007F65D7 /* HKLStepSequencer.h */,
 				1A2BC3C61C3FF95B007F65D7 /* Info.plist */,
 				1A2BC3DB1C3FFA50007F65D7 /* AudioEngine */,
 			);
-			path = HKLSynthesizer;
+			path = HKLStepSequencer;
 			sourceTree = "<group>";
 		};
-		1A2BC3CF1C3FF95B007F65D7 /* HKLSynthesizerTests */ = {
+		1A2BC3CF1C3FF95B007F65D7 /* HKLStepSequencerTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A2BC3D01C3FF95B007F65D7 /* HKLSynthesizerTests.m */,
+				1A2BC3D01C3FF95B007F65D7 /* HKLStepSequencerTests.m */,
 				1A2BC3D21C3FF95B007F65D7 /* Info.plist */,
 			);
-			path = HKLSynthesizerTests;
+			path = HKLStepSequencerTests;
 			sourceTree = "<group>";
 		};
 		1A2BC3DB1C3FFA50007F65D7 /* AudioEngine */ = {
@@ -234,16 +234,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2BC3F21C3FFA50007F65D7 /* AudioEngineIF.h in Headers */,
-				1A2BC3C51C3FF95B007F65D7 /* HKLSynthesizer.h in Headers */,
+				1A2BC3C51C3FF95B007F65D7 /* HKLStepSequencer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1A2BC3C01C3FF95B007F65D7 /* HKLSynthesizer */ = {
+		1A2BC3C01C3FF95B007F65D7 /* HKLStepSequencer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A2BC3D51C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLSynthesizer" */;
+			buildConfigurationList = 1A2BC3D51C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLStepSequencer" */;
 			buildPhases = (
 				1A2BC3BC1C3FF95B007F65D7 /* Sources */,
 				1A2BC3BD1C3FF95B007F65D7 /* Frameworks */,
@@ -254,14 +254,14 @@
 			);
 			dependencies = (
 			);
-			name = HKLSynthesizer;
+			name = HKLStepSequencer;
 			productName = KSLSynthesizer;
-			productReference = 1A2BC3C11C3FF95B007F65D7 /* HKLSynthesizer.framework */;
+			productReference = 1A2BC3C11C3FF95B007F65D7 /* HKLStepSequencer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1A2BC3CA1C3FF95B007F65D7 /* HKLSynthesizerTests */ = {
+		1A2BC3CA1C3FF95B007F65D7 /* HKLStepSequencerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A2BC3D81C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLSynthesizerTests" */;
+			buildConfigurationList = 1A2BC3D81C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLStepSequencerTests" */;
 			buildPhases = (
 				1A2BC3C71C3FF95B007F65D7 /* Sources */,
 				1A2BC3C81C3FF95B007F65D7 /* Frameworks */,
@@ -272,9 +272,9 @@
 			dependencies = (
 				1A2BC3CE1C3FF95B007F65D7 /* PBXTargetDependency */,
 			);
-			name = HKLSynthesizerTests;
+			name = HKLStepSequencerTests;
 			productName = KSLSynthesizerTests;
-			productReference = 1A2BC3CB1C3FF95B007F65D7 /* HKLSynthesizer.xctest */;
+			productReference = 1A2BC3CB1C3FF95B007F65D7 /* HKLStepSequencer.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		1A2BC3FF1C409FA0007F65D7 /* Sample */ = {
@@ -303,7 +303,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Hirohito Kato";
 				TargetAttributes = {
 					1A2BC3C01C3FF95B007F65D7 = {
@@ -319,7 +319,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1A2BC3BB1C3FF95B007F65D7 /* Build configuration list for PBXProject "HKLSynthesizer" */;
+			buildConfigurationList = 1A2BC3BB1C3FF95B007F65D7 /* Build configuration list for PBXProject "HKLStepSequencer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -332,8 +332,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A2BC3C01C3FF95B007F65D7 /* HKLSynthesizer */,
-				1A2BC3CA1C3FF95B007F65D7 /* HKLSynthesizerTests */,
+				1A2BC3C01C3FF95B007F65D7 /* HKLStepSequencer */,
+				1A2BC3CA1C3FF95B007F65D7 /* HKLStepSequencerTests */,
 				1A2BC3FF1C409FA0007F65D7 /* Sample */,
 			);
 		};
@@ -378,7 +378,7 @@
 			files = (
 				1A2BC3F01C3FFA50007F65D7 /* Synthesizer.cpp in Sources */,
 				1A2BC3E91C3FFA50007F65D7 /* AudioIO.mm in Sources */,
-				913FDDD6206F3485007E9A05 /* HKLSynthesizer.swift in Sources */,
+				913FDDD6206F3485007E9A05 /* HKLStepSequencer.swift in Sources */,
 				1A2BC3EC1C3FFA50007F65D7 /* DrumOscillator.mm in Sources */,
 				1A2BC3EE1C3FFA50007F65D7 /* Sequencer.cpp in Sources */,
 				1A2BC3F31C3FFA50007F65D7 /* AudioEngineIF.mm in Sources */,
@@ -389,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2BC3D11C3FF95B007F65D7 /* HKLSynthesizerTests.m in Sources */,
+				1A2BC3D11C3FF95B007F65D7 /* HKLStepSequencerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,12 +407,12 @@
 /* Begin PBXTargetDependency section */
 		1A2BC3CE1C3FF95B007F65D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1A2BC3C01C3FF95B007F65D7 /* HKLSynthesizer */;
+			target = 1A2BC3C01C3FF95B007F65D7 /* HKLStepSequencer */;
 			targetProxy = 1A2BC3CD1C3FF95B007F65D7 /* PBXContainerItemProxy */;
 		};
 		1A2BC4231C40ACD3007F65D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1A2BC3C01C3FF95B007F65D7 /* HKLSynthesizer */;
+			target = 1A2BC3C01C3FF95B007F65D7 /* HKLStepSequencer */;
 			targetProxy = 1A2BC4221C40ACD3007F65D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -449,12 +449,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -482,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -505,12 +507,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -532,7 +536,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -572,13 +576,13 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = HKLSynthesizer/Info.plist;
+				INFOPLIST_FILE = HKLStepSequencer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLSynthesizer;
-				PRODUCT_NAME = HKLSynthesizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLStepSequencer;
+				PRODUCT_NAME = HKLStepSequencer;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -614,13 +618,13 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = HKLSynthesizer/Info.plist;
+				INFOPLIST_FILE = HKLStepSequencer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLSynthesizer;
-				PRODUCT_NAME = HKLSynthesizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLStepSequencer;
+				PRODUCT_NAME = HKLStepSequencer;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -634,7 +638,7 @@
 				INFOPLIST_FILE = HKLSynthesizerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLSynthesizerTests;
-				PRODUCT_NAME = HKLSynthesizer;
+				PRODUCT_NAME = HKLStepSequencer;
 			};
 			name = Debug;
 		};
@@ -645,7 +649,7 @@
 				INFOPLIST_FILE = HKLSynthesizerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KatokichiSoft.HKLSynthesizerTests;
-				PRODUCT_NAME = HKLSynthesizer;
+				PRODUCT_NAME = HKLStepSequencer;
 			};
 			name = Release;
 		};
@@ -681,7 +685,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A2BC3BB1C3FF95B007F65D7 /* Build configuration list for PBXProject "HKLSynthesizer" */ = {
+		1A2BC3BB1C3FF95B007F65D7 /* Build configuration list for PBXProject "HKLStepSequencer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A2BC3D31C3FF95B007F65D7 /* Debug */,
@@ -690,7 +694,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A2BC3D51C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLSynthesizer" */ = {
+		1A2BC3D51C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLStepSequencer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A2BC3D61C3FF95B007F65D7 /* Debug */,
@@ -699,7 +703,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A2BC3D81C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLSynthesizerTests" */ = {
+		1A2BC3D81C3FF95B007F65D7 /* Build configuration list for PBXNativeTarget "HKLStepSequencerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A2BC3D91C3FF95B007F65D7 /* Debug */,
