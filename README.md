@@ -60,7 +60,21 @@ engine.setPanPosition( 1.0/*right*/, ofTrack: 1)
 engine.setAmpGain(2.0, ofTrack: 2)
 ```
 
-- Can trigger event of each step. The callback 
+- Can trigger event of each step. The callback passes the precise time of step. So you can synchronize animations with sounds.
+
+```swift
+var info = mach_timebase_info(numer: 0, denom: 0)
+mach_timebase_info(&info)
+let numer = UInt64(info.numer)
+let denom = UInt64(info.denom)
+
+engine.onTriggerdCallback = {
+    (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
+    let t_ns = ((absoluteTime - mach_absolute_time()) * numer) / denom
+    let t_sec = Double(t_ns) / 1_000_000_000
+    print("<\(stepNo)> \(tracks) will fire after \(t_sec)sec")
+}
+```
 
 # Methods
 
