@@ -166,7 +166,7 @@ public func stop()
 ```
 # Screenshots of sample project
 
-The sample shows 4 track & N steps sequencer.
+The sample shows 4 tracks & N steps sequencer.
 
 ![screenshot](images/screenshot_0.png)
 
