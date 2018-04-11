@@ -5,7 +5,7 @@
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
 <a href="https://raw.githubusercontent.com/hirohitokato/HKLStepSequencer/master/LICENSE"><img src="http://img.shields.io/badge/license-NewBSD-blue.svg?style=flat" alt="License: New BSD" /></a>
 
-Audio synthesizer & sequencer engine for iOS. It enables you to create a rhythmbox/drum-machine app easily.
+A step sequencer engine for iOS. It enables you to create a rhythmbox/drum-machine app easily.
 
 # Features
 
@@ -60,93 +60,95 @@ engine.setPanPosition( 1.0/*right*/, ofTrack: 1)
 engine.setAmpGain(2.0, ofTrack: 2)
 ```
 
+- Can trigger event of each step. The callback 
+
 # Methods
 
-- `start()` starts synthesizer
+- `start()` starts sequencer
 - `stop()` stops running
 - `tempo` property sets its bpm
+- `numTracks` property decides the number of tracks.
 - `numSteps` property decides total steps of the sequencer
 - `sounds` property sets a sound file names for each track.
 - `setStepSequence()` sets a note on/off sequence for the specified track.
 - `setAmpGain()` sets an amp gain for the specified track.
 - `setPanPosition()` sets a panning position for the specified track.
 
-The class API is as follows:
+The class interface is as follows:
 
 ```swift
-@protocol AudioEngineIFProtocol;
+public class HKLStepSequencer : NSObject {
 
-@interface AudioEngineIF : NSObject
+/// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+///
+/// - Parameters:
+///   - tracks: an array of tracks that the note is now ON
+///   - stepNo: the index of current step
+///   - absoluteTime: host time when the note is triggered
+public typealias TriggerdCallback = (_ tracks: [Int], _ stepNo: Int, _ absoluteTime: UInt64) -> ()
 
-/**
-*  bpm
-*/
-@property (nonatomic, assign) double tempo;
+/// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+///
+/// - Parameters:
+///   - tracks: an array of tracks that the note is now ON
+///   - stepNo: the index of current step
+///   - absoluteTime: host time when the note is triggered
+public var onTriggerdCallback: TriggerdCallback?
 
-/**
-*  number of steps in a track
-*/
-@property (nonatomic, assign) NSInteger numSteps;
+/// Instantiate a object and initialize it.
+///
+/// - Parameters:
+///   - numOfTracks: The number of tracks the sequencer has
+///   - numOfSteps: The number of steps in a track
+///   - stepsPerBeat: The number of steps in one beat
+public init(numOfTracks: Int, numOfSteps: Int, stepsPerBeat: Int = default)
 
-/**
-*  Sound files. The number of sounds must be equal to the number of tracks
-*/
-@property (nonatomic, copy) NSArray<NSString*>* _Nullable sounds;
+/// bpm
+public var tempo: Double { get set }
 
-/**
-*  Set sequence for the specified track.
-*
-*  The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
-*
-*  @param sequence array of bool values. true means note on.
-*  @param trackNo  track number
-*/
-- (void)setStepSequence:(NSArray<NSNumber *>* _Nonnull)sequence ofTrack:(NSInteger)trackNo;
+/// number of tracks the sequencer has
+public var numberOfTracks: Int { get set }
 
-/**
-*  Set amplifier gain(0.0-2.0) for the specified track
-*
-*  @param ampGain 0.0(mute)…1.0(original)…2.0(x2.0)
-*  @param trackNo track number
-*/
-- (void)setAmpGain:(double)ampGain ofTrack:(NSInteger)trackNo;
+/// number of steps in a track
+public var numberOfSteps: Int { get set }
 
-/**
-*  Set pan position(-1.0…1.0) for the specified track.
-*
-*  @param position -1.0(left)…0.0(center)…1.0(right)
-*  @param trackNo  track number
-*/
-- (void)setPanPosition:(double)position ofTrack:(NSInteger)trackNo;
+///  Sound files for each track. The number of sounds must be equal to the number of tracks
+public var sounds: [String]? { get set }
 
-/**
-*  Start a sequencer
-*/
-- (void)start;
+/// Set sequence for the specified track.
+///
+/// The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
+///
+/// - Parameters:
+///   - sequence: an array of bool values. true means note on.
+///   - trackNo: target track number
+public func setStepSequence(_ sequence: [Bool], ofTrack trackNo: Int)
 
-/**
-*  Stop a sequencer
-*/
-- (void)stop;
+/// Erase all notes(ON/OFF) of the specified track
+///
+/// - Parameter trackNo: target track number
+public func clearSequence(ofTrackNo trackNo: Int)
 
-/**
-*  Delegate object conforms to AudioEngineIFProtocol
-*/
-@property (nonatomic, weak) id<AudioEngineIFProtocol> delegate;
-@end
+/// Set amplifier gain(0.0-2.0) for the specified track
+///
+/// - Parameters:
+///   - ampGain: 0.0(mute)…1.0(as is)…2.0(x2.0)
+///   - trackNo: target track number
+public func setAmpGain(_ ampGain: Double, ofTrack trackNo: Int)
 
-@protocol AudioEngineIFProtocol <NSObject>
-@required
-/**
-*  Tells the delegate that the sequencer has triggered at the step(time)
-*
-*  @param engine       the audio engine that the tracks are triggered
-*  @param tracks       tracks that the note is ON
-*  @param stepNo       step number
-*  @param absoluteTime time for triggered
-*/
-- (void)audioEngine:(AudioEngineIF * _Nonnull)engine didTriggeredTracks:(NSArray<NSNumber *>* _Nonnull) tracks step:(int)stepNo atTime:(uint64_t)absoluteTime;
-@end
+/// Set pan position(-1.0…1.0) for the specified track.
+///
+/// - Parameters:
+///   - position: -1.0(left)…0.0(center)…1.0(right)
+///   - trackNo: target track number
+public func setPanPosition(_ position: Double, ofTrack trackNo: Int)
+
+/// Start the sequencer
+public func start()
+
+/// Stop the sequencer
+public func stop()
+}
 ```
 # Screenshots of sample project
 
