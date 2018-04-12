@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tay-Id-aPi">
-                                <rect key="frame" x="327" y="728" width="32" height="30"/>
+                                <rect key="frame" x="327" y="727.66666666666663" width="32" height="30.333333333333371"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
                                     <action selector="Stop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ulB-Oq-dN9"/>
@@ -62,13 +62,13 @@
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Czk-6W-7NL">
-                                <rect key="frame" x="62" y="690.33333333333337" width="231" height="30.666666666666629"/>
+                                <rect key="frame" x="62" y="690" width="231" height="31"/>
                                 <connections>
                                     <action selector="bpmSliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="EGO-BF-Hvv"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzt-eP-vnw">
-                                <rect key="frame" x="299" y="694.33333333333337" width="60" height="20.333333333333371"/>
+                                <rect key="frame" x="299" y="694" width="60" height="20.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="8XZ-M3-cfA"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QE-vo-g2a">
-                                <rect key="frame" x="299" y="656.66666666666663" width="60" height="20.333333333333371"/>
+                                <rect key="frame" x="299" y="656.33333333333337" width="60" height="20.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="jEU-gd-eiE"/>
                                 </constraints>
@@ -91,8 +91,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="1" maxValue="64" translatesAutoresizingMaskIntoConstraints="NO" id="u7n-nS-So6" userLabel="Step Slider">
-                                <rect key="frame" x="62.666666666666686" y="652.33333333333337" width="231" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="1" maxValue="16" translatesAutoresizingMaskIntoConstraints="NO" id="u7n-nS-So6" userLabel="Step Slider">
+                                <rect key="frame" x="62.666666666666686" y="652" width="231" height="31"/>
                                 <connections>
                                     <action selector="stepSliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bd2-KT-8wc"/>
                                 </connections>
@@ -207,19 +207,19 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PK1-sV-ZtH">
-                                <rect key="frame" x="16" y="371" width="343" height="266.33333333333326"/>
+                                <rect key="frame" x="16" y="371" width="343" height="266"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yXW-vx-LDk">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="63.666666666666664"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-LP-ClY">
-                                        <rect key="frame" x="0.0" y="67.666666666666686" width="343" height="63.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="67.666666666666686" width="343" height="63.333333333333343"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fWz-Tw-rjx">
-                                        <rect key="frame" x="0.0" y="135.33333333333331" width="343" height="63.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="135" width="343" height="63.666666666666657"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-rn-ZpV">
-                                        <rect key="frame" x="0.0" y="202.66666666666663" width="343" height="63.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="202.66666666666663" width="343" height="63.333333333333314"/>
                                     </stackView>
                                 </subviews>
                             </stackView>

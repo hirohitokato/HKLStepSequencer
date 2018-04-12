@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var _stepSlider: UISlider!
 
     @IBOutlet var _tracks: [UIStackView]!
-    var _notes = [[Bool]]()
+    var _sequences = [[Bool]]()
 
     let BPM_MIN = 30.0
     let BPM_MAX = 300.0
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         bpmSliderUpdated(_bpmSlider)
         stepSliderUpdated(_stepSlider)
 
+        resetSequence(self)
         setupTrackUI()
 
         var info = mach_timebase_info(numer: 0, denom: 0)
@@ -39,10 +40,14 @@ class ViewController: UIViewController {
         let denom = UInt64(info.denom)
 
         _engine.onTriggerdCallback = {
-            (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
+            [weak self] (tracks: [Int], stepNo: Int, absoluteTime: UInt64) in
             let t_ns = ((absoluteTime - mach_absolute_time()) * numer) / denom
             let t_sec = Double(t_ns) / 1_000_000_000
             print("<\(stepNo)> \(tracks) will fire after \(t_sec)sec")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + t_sec) {
+                self?.blink(step: stepNo)
+            }
         }
     }
 
@@ -55,30 +60,25 @@ class ViewController: UIViewController {
     }
 
     private func setupTrackUI() {
-        for (i, track) in _tracks.enumerated() {
-            let trackNotes = [Bool](repeating: false, count: 8)
-            _notes.append(trackNotes)
 
-            for j in 0..<8 {
+        for (i, track) in _tracks.enumerated() {
+            track.arrangedSubviews.forEach {
+                $0.removeFromSuperview()
+            }
+
+            for j in 0..<_engine.numberOfSteps {
                 let button = UIButton(type: .custom)
+
                 button.tag = i * 100 + j
                 button.backgroundColor = .white
                 button.layer.borderColor = UIColor.gray.cgColor
                 button.layer.borderWidth = 1
                 button.layer.cornerRadius = 4
-                button.addTarget(self, action: #selector(tappedButton(_:)), for: .touchDown)
+                button.addTarget(self, action: #selector(stepButtonTapped(_:)), for: .touchDown)
+
                 track.addArrangedSubview(button)
             }
         }
-    }
-    @objc public func tappedButton(_ sender: UIButton) {
-        let track = sender.tag / 100
-        let step = sender.tag % 100
-
-        _notes[track][step] = !_notes[track][step]
-        sender.backgroundColor = _notes[track][step] ? .red : .white
-
-        _engine.setStepSequence(_notes[track], ofTrack: track)
     }
 }
 
@@ -89,21 +89,25 @@ extension ViewController {
     }
 
     @IBAction func resetSequence(_ sender: Any) {
-        var track0 = [Bool](repeating: false, count: _engine.numberOfSteps)
-        var track1 = [Bool](repeating: false, count: _engine.numberOfSteps)
-        var track2 = [Bool](repeating: false, count: _engine.numberOfSteps)
-        var track3 = [Bool](repeating: false, count: _engine.numberOfSteps)
 
-        for i in 0 ..< _engine.numberOfSteps {
-            track0[i] = ((i % 4) == 0) // kick
-            track1[i] = ((i % 3) == 0) // snare
-            track2[i] = ((i % 2) == 0) // zap
-            track3[i] = ((i % 1) == 0) // noiz
+        _sequences.removeAll()
+
+        for i in 0..<_engine.numberOfTracks {
+            let sequence = [Bool](repeating: false, count: _engine.numberOfSteps)
+
+            _sequences.append(sequence)
+            _engine.setStepSequence(sequence, ofTrack: i)
         }
-        _engine.setStepSequence(track0, ofTrack: 0)
-        _engine.setStepSequence(track1, ofTrack: 1)
-        _engine.setStepSequence(track2, ofTrack: 2)
-        _engine.setStepSequence(track3, ofTrack: 3)
+    }
+
+    @objc public func stepButtonTapped(_ sender: UIButton) {
+        let track = sender.tag / 100
+        let step = sender.tag % 100
+
+        _sequences[track][step] = !_sequences[track][step]
+        sender.backgroundColor = _sequences[track][step] ? .red : .white
+
+        _engine.setStepSequence(_sequences[track], ofTrack: track)
     }
 
     @IBAction func Start(_ sender: Any) {
@@ -125,12 +129,30 @@ extension ViewController {
     @IBAction func bpmSliderUpdated(_ sender: UISlider) {
         let newBpm = (BPM_MAX * Double(sender.value)) + BPM_MIN
         _engine.tempo = newBpm
-        _bpmLabel.text = String(newBpm)
+        _bpmLabel.text = String(Int(newBpm))
     }
     @IBAction func stepSliderUpdated(_ sender: UISlider) {
         let numStep = Int(sender.value)
         _engine.numberOfSteps = numStep
         _stepLabel.text = String(numStep)
+
+        resetSequence(self)
+        setupTrackUI()
+    }
+
+    private func blink(step: Int) {
+        _tracks.forEach {
+            $0.arrangedSubviews
+                .filter { $0.tag % 100 == step }
+                .forEach { button in
+                    let animation = CABasicAnimation(keyPath: "borderWidth")
+                    animation.duration = 0.3
+                    animation.repeatCount = 0
+                    animation.fromValue = 3
+                    animation.toValue = 1
+                    button.layer.add(animation, forKey: "borderWidth")
+            }
+        }
     }
 }
 
