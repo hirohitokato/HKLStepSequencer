@@ -175,7 +175,7 @@ public func stop()
 ```
 ## Screenshots of sample project
 
-The sample shows 4 tracks & N steps sequencer.
+The sample shows 4 tracks & N steps sequencer. You can easily create such an app with HKLStepSequencer.😊
 
 ![screenshot](images/screenshot_0.png)
 
