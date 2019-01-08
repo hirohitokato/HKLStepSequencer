@@ -9,7 +9,8 @@
 import Foundation
 
 public class HKLStepSequencer: NSObject {
-    /// callbacks from the audio engine to tell that the sequencer has triggered at the step(time).
+    /// typealias for callback from the audio engine to tell that the sequencer has triggered at the step(time).
+    /// It is available to show UI the specified note is ON.
     ///
     /// - Parameters:
     ///   - tracks: an array of tracks that the note is now ON
@@ -72,7 +73,7 @@ public class HKLStepSequencer: NSObject {
 
     /// Set sequence for the specified track.
     ///
-    /// The sequence contains NSNumber<bool> values. The size must be equal to numSteps property.
+    /// The sequence contains bool values. The size must be equal to numSteps property.
     ///
     /// - Parameters:
     ///   - sequence: an array of bool values. true means note on.
@@ -124,6 +125,7 @@ extension HKLStepSequencer: AudioEngineIFProtocol {
 
         let intStepNo = Int(stepNo)
         let intTracks = tracks.compactMap { return $0.intValue }
+        // notify the step is triggered
         callback(intTracks, intStepNo, absoluteTime)
     }
 }
