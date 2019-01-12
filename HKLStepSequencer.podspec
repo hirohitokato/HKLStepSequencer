@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "HKLStepSequencer"
-    s.version      = "0.9.0"
+    s.version      = "0.9.1"
     s.summary      = "A simple but precise step sequencer engine for iOS."
 
     s.description  = <<-DESC
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     s.social_media_url   = "https://github.com/hirohitokato"
 
     s.platform     = :ios
-    s.ios.deployment_target = "9.3"
+    s.ios.deployment_target = "10.0"
 
     s.requires_arc = true
     s.frameworks   = 'Foundation', 'AVFoundation', 'AudioToolbox'
