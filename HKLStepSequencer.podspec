@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "HKLStepSequencer"
-    s.version      = "0.9.1"
+    s.version      = "1.0.1"
     s.summary      = "A simple but precise step sequencer engine for iOS."
 
     s.description  = <<-DESC
